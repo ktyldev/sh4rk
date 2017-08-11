@@ -180,4 +180,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mount: {fileID: 1226240673205102, guid: 2dab59524b04ba24dbec467cc4411b4f, type: 2}
-  speed: 100
+  speed: 70

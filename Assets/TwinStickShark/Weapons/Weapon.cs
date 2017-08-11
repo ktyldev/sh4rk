@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour {
+    
+    public GameObject projectile;
+    public Transform projectileSpawn;
 
     public float shotDelay = 1;
 
     private bool _firing;
-
-    // Use this for initialization
-    void Start() {
-
-    }
-
+    
     // Update is called once per frame
     void Update() {
         Rotate();
@@ -30,17 +28,18 @@ public class Weapon : MonoBehaviour {
     private IEnumerator Fire() {
         while (FireButtonPressed()) {
             Debug.Log("Fire!");
+
+            var proj = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation, null);
+            
             yield return new WaitForSeconds(shotDelay);
         }
 
         _firing = false;
     }
-
+    
     private void Rotate() {
         var dir = new Vector3(Input.GetAxis("RightV"), 0, Input.GetAxis("RightH"));
-        if (dir == Vector3.zero)
-            return;
-
+        
         transform.LookAt(transform.position + dir);
     }
 }
