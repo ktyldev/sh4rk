@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Shark : MonoBehaviour {
 
-    public float speed;
+    public GameObject mount;
 
+    public float speed;
+    
     private Vector3 _direction;
 
     // Use this for initialization
     void Start() {
-
+        Instantiate(mount, transform);
     }
 
     // Update is called once per frame
