@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
-    
+
     public int scoreValue;
 
     private Transform _player;
@@ -26,6 +26,10 @@ public class Enemy : MonoBehaviour {
 
     void OnDestroy() {
         Player.instance.AddScore(scoreValue);
+
+        if (_explosions == null)
+            return;
+        
         _explosions.MakeExplosion(transform.position);
     }
 
@@ -33,7 +37,7 @@ public class Enemy : MonoBehaviour {
         var shark = collision.gameObject.GetComponent<Shark>();
         if (shark == null)
             return;
-        
+
         Debug.Log("Game over!");
         Time.timeScale = 0;
     }
