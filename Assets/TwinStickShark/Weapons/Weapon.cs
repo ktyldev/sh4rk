@@ -27,10 +27,7 @@ public class Weapon : MonoBehaviour {
 
     private IEnumerator Fire() {
         while (FireButtonPressed()) {
-            Debug.Log("Fire!");
-
-            var proj = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation, null);
-            
+            Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation, null);
             yield return new WaitForSeconds(shotDelay);
         }
 
