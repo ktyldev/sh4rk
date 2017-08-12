@@ -850,6 +850,7 @@ MonoBehaviour:
   enemy: {fileID: 1836156328482968, guid: 425aa71f2b7bba94a8bb3723bce3b9df, type: 2}
   minDistanceFromPlayer: 150
   numberToSpawn: 15
+  spawnDelay: 1
 --- !u!1 &1022636070
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour {
     public GameObject enemy;
     public float minDistanceFromPlayer;
     public int numberToSpawn;
+    public float spawnDelay;
 
     private Transform _playerTransform;
     
@@ -14,15 +15,17 @@ public class EnemySpawner : MonoBehaviour {
 	void Start () {
         _playerTransform = GetComponent<Player>().sharkTransform;
 
-        for (int i = 0; i < numberToSpawn; i++) {
-            SpawnEnemy();
-        }
+        StartCoroutine(SpawnWave());
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private IEnumerator SpawnWave() {
+        for (int i = 0; i < numberToSpawn; i++) {
+            SpawnEnemy();
+            yield return new WaitForSeconds(spawnDelay);
+        }
+
+        Debug.Log("Finished spawning wave");
+    }
 
     private void SpawnEnemy() {
         var angle = Random.rotation.eulerAngles.y;

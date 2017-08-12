@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
     private Shark _shark;
 
     public Transform sharkTransform { get { return _shark.transform; } }
+    public int score { get; private set; }
 
     void Awake() {
         if (instance != null)
@@ -19,14 +20,13 @@ public class Player : MonoBehaviour {
         instance = this;
         _shark = Instantiate(shark).GetComponent<Shark>();
     }
-
-    // Use this for initialization
+    
     void Start() {
         Camera.main.GetComponent<CameraController>().trackedObject = _shark.transform;
     }
 
-    // Update is called once per frame
-    void Update() {
-
+    public void AddScore(int amount) {
+        score += amount;
+        Debug.Log("Score: " + score);
     }
 }
