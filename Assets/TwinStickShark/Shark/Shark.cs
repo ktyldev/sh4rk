@@ -5,30 +5,27 @@ using UnityEngine;
 public class Shark : MonoBehaviour {
 
     public GameObject mount;
-
-    public float speed;
     
     private Vector3 _direction;
+    private Mover _mover;
 
-    // Use this for initialization
+    void Awake() {
+        _direction = new Vector3();
+        _mover = GetComponent<Mover>();
+    }
+    
     void Start() {
         Instantiate(mount, transform);
     }
-
-    // Update is called once per frame
+    
     void Update() {
         Move();
     }
 
     private void Move() {
-        _direction = new Vector3(Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal")).normalized;
-
-        if (_direction == Vector3.zero)
-            return;
-
-        transform.LookAt(transform.position + _direction);
-
-        var moveDir = new Vector3(_direction.z, 0, -_direction.x);
-        transform.Translate(moveDir * Time.deltaTime * speed, Space.World);
+        _direction.x = Input.GetAxis("Horizontal");
+        _direction.z = Input.GetAxis("Vertical");
+        
+        _mover.SetDirection(_direction);
     }
 }

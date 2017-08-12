@@ -5,23 +5,18 @@ using UnityEngine;
 public class Projectile : MonoBehaviour {
 
     public float speed;
-
-    private Collider _collider;
+    
+    private Mover _mover;
 
     void Awake() {
-        _collider = GetComponent<Collider>();
+        _mover = GetComponent<Mover>();
     }
-
-    // Use this for initialization
+    
     void Start() {
         Destroy(gameObject, 5);
+        _mover.SetDirection(transform.forward);
     }
-
-    // Update is called once per frame
-    void Update() {
-        Move();
-    }
-
+    
     private void OnCollisionEnter(Collision other) {
         var enemy = other.gameObject.GetComponent<Enemy>();
         if (enemy == null)
@@ -29,10 +24,5 @@ public class Projectile : MonoBehaviour {
 
         Destroy(gameObject);
         Destroy(enemy.gameObject);
-    }
-
-    private void Move() {
-        var dir = transform.right;
-        transform.Translate(dir * speed * Time.deltaTime, Space.World);
     }
 }

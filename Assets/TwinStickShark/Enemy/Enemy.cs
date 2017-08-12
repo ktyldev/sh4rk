@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
-
-    public float speed = 10;
-
+    
     private Transform _player;
+    private Mover _mover;
 
-	// Use this for initialization
-	void Start () {
+    void Awake() {
+        _mover = GetComponent<Mover>();    
+    }
+
+    // Use this for initialization
+    void Start () {
         _player = Player.instance.sharkTransform;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        transform.LookAt(_player);
-
         var dir = _player.transform.position - transform.position;
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+        _mover.SetDirection(dir.normalized);
 	}
 }
