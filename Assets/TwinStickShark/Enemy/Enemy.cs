@@ -40,5 +40,6 @@ public class Enemy : MonoBehaviour {
 
         Debug.Log("Game over!");
         Time.timeScale = 0;
+        GameOverSplash.Show();
     }
 }
