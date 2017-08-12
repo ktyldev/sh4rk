@@ -27,6 +27,5 @@ public class Player : MonoBehaviour {
 
     public void AddScore(int amount) {
         score += amount;
-        Debug.Log("Score: " + score);
     }
 }

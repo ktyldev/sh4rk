@@ -984,9 +984,10 @@ GameObject:
   - component: {fileID: 954160756}
   - component: {fileID: 954160755}
   - component: {fileID: 954160757}
+  - component: {fileID: 954160758}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1031,6 +1032,18 @@ MonoBehaviour:
   minDistanceFromPlayer: 150
   numberToSpawn: 15
   spawnDelay: 1
+--- !u!114 &954160758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 954160754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85298c1ddb8cf1a41a4d7b20a8785b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 1998600898240592, guid: ba7f3da5d5f33f3468faf21b76b42a3a, type: 2}
 --- !u!1 &1022636070
 GameObject:
   m_ObjectHideFlags: 0
