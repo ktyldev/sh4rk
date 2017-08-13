@@ -5,6 +5,7 @@ using UnityEngine;
 public class Mover : MonoBehaviour {
 
     public float speed;
+    public bool bindToGameArea;
 
     private Vector3 _direction;
     
@@ -13,6 +14,9 @@ public class Mover : MonoBehaviour {
             return;
         
         transform.Translate(_direction * Time.deltaTime * speed, Space.World);
+        if (bindToGameArea) {
+            transform.position = GameManager.BindToGameArea(transform.position);
+        }
 	}
 
     public void SetDirection(Vector3 direction) {
@@ -22,3 +26,4 @@ public class Mover : MonoBehaviour {
         transform.LookAt(transform.position + _direction);
     }
 }
+ 
