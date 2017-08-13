@@ -8,44 +8,78 @@ public class InputManager : MonoBehaviour {
 
     public ControlMode controlMode;
 
-    private static Vector3 _direction;
+    private static Vector3 _move;
+    private static Vector3 _aim;
 
     void Awake() {
         if (_instance != null) 
             throw new System.Exception();
 
         _instance = this;
-        _direction = new Vector3();
+        _move = new Vector3();
     }
 
     public static Vector3 GetMoveDirection() {
         switch (_instance.controlMode) {
             case ControlMode.MouseKeyboard:
-                _direction = Vector3.zero;
+                _move = Vector3.zero;
 
                 if (Input.GetKey(KeyCode.A)) {
-                    _direction.x = -1;
+                    _move.x = -1;
                 }
                 if (Input.GetKey(KeyCode.D)) {
-                    _direction.x = 1;
+                    _move.x = 1;
                 }
                 if (Input.GetKey(KeyCode.W)) {
-                    _direction.z = 1;
+                    _move.z = 1;
                 }
                 if (Input.GetKey(KeyCode.S)) {
-                    _direction.z = -1;
+                    _move.z = -1;
                 }
 
                 break;
             case ControlMode.Gamepad:
-                _direction.x = Input.GetAxis("Horizontal");
-                _direction.z = Input.GetAxis("Vertical");
-                break;
-
-            default:
+                _move.x = Input.GetAxis("Horizontal");
+                _move.z = Input.GetAxis("Vertical");
                 break;
         }
 
-        return _direction;
+        return _move;
+    }
+
+    public static Vector3 GetAimDirection() {
+        switch (_instance.controlMode) {
+            case ControlMode.MouseKeyboard:
+                var mousePos = Input.mousePosition;
+                
+                mousePos.x -= Screen.width / 2;
+                mousePos.y -= Screen.height / 2;
+
+                _aim.x = -mousePos.y;
+                _aim.z = mousePos.x;
+                _aim.Normalize();
+                break;
+                
+            case ControlMode.Gamepad:
+                _aim.x = Input.GetAxis("RightV");
+                _aim.z = Input.GetAxis("RightH");
+
+                break;
+        }
+
+        return _aim;
+    }
+
+    public static bool Attack() {
+        switch (_instance.controlMode) {
+            case ControlMode.MouseKeyboard:
+                return Input.GetMouseButton(0);
+                
+            case ControlMode.Gamepad:
+                return Input.GetAxis("Attack") == 1;
+
+            default:
+                throw new System.Exception();
+        }
     }
 }
