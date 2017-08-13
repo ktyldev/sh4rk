@@ -22,7 +22,7 @@ public class Readout : MonoBehaviour {
         var sb = new StringBuilder();
         sb.AppendLine("Score: " + _player.score);
         sb.AppendLine("Wave: " + _enemies.currentWave);
-        sb.AppendLine("Remaing: " + _enemies.remaining);
+        sb.AppendLine("Remaining: " + _enemies.remaining);
 
         _text.text = sb.ToString();
     }
