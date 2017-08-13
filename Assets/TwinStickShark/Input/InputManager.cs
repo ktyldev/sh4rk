@@ -19,6 +19,26 @@ public class InputManager : MonoBehaviour {
         _move = new Vector3();
     }
 
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            ToggleControlMode();
+        }    
+    }
+
+    public static ControlMode currentControlMode {
+        get {
+            return _instance.controlMode;
+        }
+    }
+
+    private void ToggleControlMode() {
+        if (controlMode == ControlMode.Gamepad) {
+            controlMode = ControlMode.MouseKeyboard;
+        } else {
+            controlMode = ControlMode.Gamepad;
+        }
+    }
+
     public static Vector3 GetMoveDirection() {
         switch (_instance.controlMode) {
             case ControlMode.MouseKeyboard:
