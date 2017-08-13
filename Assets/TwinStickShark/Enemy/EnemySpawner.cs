@@ -15,6 +15,7 @@ public class EnemySpawner : MonoBehaviour {
     private int _currentWave = 0;
 
     public int currentWave { get { return _currentWave; } }
+    public int remaining { get { return _enemiesLeft; } }
     
     void Start () {
         _playerTransform = GetComponent<Player>().sharkTransform;

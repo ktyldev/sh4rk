@@ -12,12 +12,9 @@ public abstract class Shot : MonoBehaviour {
 
     void Awake() {
         _mover = GetComponent<Mover>();
-    }
-
-    void Start() {
         Destroy(gameObject, life);    
     }
-
+    
     void Update() {
         _mover.SetDirection(GetMoveDir());
     }
