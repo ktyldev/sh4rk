@@ -16,7 +16,14 @@ public abstract class Shot : MonoBehaviour {
 
     void Start() {
         Destroy(gameObject, life);    
-        _mover.SetDirection(transform.forward);
+    }
+
+    void Update() {
+        _mover.SetDirection(GetMoveDir());
+    }
+
+    protected virtual Vector3 GetMoveDir() {
+        return transform.forward;
     }
 
     protected abstract bool ValidateHit(GameObject obj);
