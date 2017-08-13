@@ -29,15 +29,4 @@ public abstract class Shot : MonoBehaviour {
         Destroy(gameObject);
         OnHit(other.gameObject);
     }
-
-    //private void OnCollisionEnter(Collision other) {
-    //    //var enemy = other.gameObject.GetComponent<Enemy>();
-    //    //if (enemy == null)
-    //    //    return;
-    //    if (!ValidateHit(other.gameObject))
-    //        return;
-        
-    //    Destroy(gameObject);
-    //    OnHit(other.gameObject);
-    //}
 }
