@@ -40,8 +40,8 @@ public class Enemy : MonoBehaviour {
         _explosions.MakeExplosion(transform.position);
     }
 
-    void OnCollisionEnter(Collision collision) {
-        var shark = collision.gameObject.GetComponent<Shark>();
+    private void OnTriggerEnter(Collider other) {
+        var shark = other.gameObject.GetComponent<Shark>();
         if (shark == null)
             return;
 
