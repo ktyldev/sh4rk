@@ -6,25 +6,33 @@ public class EnemySpawner : MonoBehaviour {
 
     public GameObject enemy;
     public float minDistanceFromPlayer;
-    public int numberToSpawn;
+    public int waveEnemies;
     public float spawnDelay;
-
-    private Transform _playerTransform;
     
-	// Use this for initialization
-	void Start () {
+    private Transform _playerTransform;
+    private int _enemiesLeft;
+    private int _currentWave = 0;
+    
+    void Start () {
         _playerTransform = GetComponent<Player>().sharkTransform;
-
-        StartCoroutine(SpawnWave());
 	}
-	
-    private IEnumerator SpawnWave() {
-        for (int i = 0; i < numberToSpawn; i++) {
+
+    void Update() {
+        if (_enemiesLeft == 0 && !IsInvoking("SpawnWave")) {
+            Debug.Log("Cleared wave " + _currentWave);
+            _currentWave++;
+            StartCoroutine(SpawnWave(_currentWave));
+        }
+    }
+
+    private IEnumerator SpawnWave(int waveNumber) {
+        Debug.Log("Starting wave " + waveNumber);
+        for (int i = 0; i < waveNumber * waveEnemies; i++) {
             SpawnEnemy();
             yield return new WaitForSeconds(spawnDelay);
         }
 
-        Debug.Log("Finished spawning wave");
+        Debug.Log("Finished spawning wave " + waveNumber);
     }
 
     private void SpawnEnemy() {
@@ -33,6 +41,8 @@ public class EnemySpawner : MonoBehaviour {
         var offset = dir * minDistanceFromPlayer;
         var spawnPos = _playerTransform.position + offset;
 
-        Instantiate(enemy, spawnPos, Quaternion.identity, null);
+        var newEnemy = Instantiate(enemy, spawnPos, Quaternion.identity, null).GetComponent<Enemy>();
+        newEnemy.onDeath.AddListener(() => _enemiesLeft--);
+        _enemiesLeft++;
     }
 }

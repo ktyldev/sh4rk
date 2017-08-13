@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour {
 
@@ -10,9 +11,13 @@ public class Enemy : MonoBehaviour {
     private Mover _mover;
     private ExplosionManager _explosions;
 
+    public UnityEvent onDeath { get; private set; }
+
     void Awake() {
         _mover = GetComponent<Mover>();
         _explosions = GameObject.FindGameObjectWithTag("GameController").GetComponent<ExplosionManager>();
+
+        onDeath = new UnityEvent();
     }
 
     void Start() {
@@ -25,11 +30,12 @@ public class Enemy : MonoBehaviour {
     }
 
     void OnDestroy() {
+        onDeath.Invoke();
         Player.instance.AddScore(scoreValue);
 
         if (_explosions == null)
             return;
-        
+
         _explosions.MakeExplosion(transform.position);
     }
 
