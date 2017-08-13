@@ -1011,7 +1011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d22e71743aafdc34a861da1d756daf99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1836156328482968, guid: 425aa71f2b7bba94a8bb3723bce3b9df, type: 2}
+  enemy: {fileID: 1754460025793262, guid: 7f5e44b9a50dbf94eae964e9c48b7a33, type: 2}
   minDistanceFromPlayer: 150
   waveEnemies: 15
   spawnDelay: 0.5

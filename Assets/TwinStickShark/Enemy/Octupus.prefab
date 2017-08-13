@@ -83,11 +83,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4390625608067454}
   - component: {fileID: 114436084383909718}
+  - component: {fileID: 114829835270501076}
   - component: {fileID: 65926679449543228}
   - component: {fileID: 54352509884516034}
-  - component: {fileID: 114829835270501076}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Octupus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e747347399198143870de3b84e0468a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreValue: 420
+  scoreValue: 69
 --- !u!114 &114829835270501076
 MonoBehaviour:
   m_ObjectHideFlags: 1

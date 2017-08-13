@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour {
+public abstract class Weapon : MonoBehaviour {
     
     public GameObject projectile;
     public Transform projectileSpawn;
@@ -15,18 +15,17 @@ public class Weapon : MonoBehaviour {
     void Update() {
         Rotate();
 
-        if (FireButtonPressed() && !_firing) {
+        if (GetIsFiring() && !_firing) {
             _firing = true;
             StartCoroutine(Fire());
         }
     }
 
-    private bool FireButtonPressed() {
-        return Input.GetAxis("Attack") == 1;
-    }
-
+    protected abstract bool GetIsFiring();
+    protected abstract Vector3 GetDir();
+    
     private IEnumerator Fire() {
-        while (FireButtonPressed()) {
+        while (GetIsFiring()) {
             Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation, null);
             yield return new WaitForSeconds(shotDelay);
         }
@@ -35,8 +34,6 @@ public class Weapon : MonoBehaviour {
     }
     
     private void Rotate() {
-        var dir = new Vector3(Input.GetAxis("RightV"), 0, Input.GetAxis("RightH"));
-        
-        transform.LookAt(transform.position + dir);
+        transform.LookAt(transform.position + GetDir());
     }
 }

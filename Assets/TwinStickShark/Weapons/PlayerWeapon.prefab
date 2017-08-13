@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4873670703115414}
   - component: {fileID: 114885668758233924}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: PlayerWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1034961729532858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37e583fd998a0c2438797ea398672489, type: 3}
+  m_Script: {fileID: 11500000, guid: 45475440498e2af47bd5d06b07e2e69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1681999096615736, guid: 195373eeebbee7c49b8b52f750b8b9d0, type: 2}
