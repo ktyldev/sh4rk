@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemyWeapon : Weapon {
 
     private Transform _target;
-
+    
     void Start() {
         _target = Player.instance.sharkTransform;
     }

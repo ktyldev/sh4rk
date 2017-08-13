@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114301648664174362}
   - component: {fileID: 114458770128645992}
   - component: {fileID: 65540337331681856}
+  - component: {fileID: 54778969251339670}
   m_Layer: 0
   m_Name: Shark
   m_TagString: Untagged
@@ -99,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1044657094749522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.82, y: 0, z: -12.590454}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4898421694857220}
@@ -200,6 +201,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1557812358304766}
   m_Mesh: {fileID: 4300000, guid: 276c4cbd3142cba4b8917547521ac2be, type: 3}
+--- !u!54 &54778969251339670
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1044657094749522}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 100
+  m_AngularDrag: 100
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!65 &65540337331681856
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -207,11 +223,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1044657094749522}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 15, y: 10, z: 29}
-  m_Center: {x: 0, y: 5, z: -0.5}
+  m_Size: {x: 15, y: 15, z: 29}
+  m_Center: {x: 0, y: 7, z: -0.5}
 --- !u!108 &108262114057617300
 Light:
   m_ObjectHideFlags: 1

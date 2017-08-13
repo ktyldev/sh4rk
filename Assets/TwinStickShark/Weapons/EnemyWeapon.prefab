@@ -277,4 +277,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 1890130342103006, guid: 14b9c089a0ab0804ea6a6e493892c05a, type: 2}
   projectileSpawn: {fileID: 4715008122678158}
-  shotDelay: 1
+  shotDelay: 10

@@ -965,6 +965,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 954160756}
+  - component: {fileID: 954160759}
   - component: {fileID: 954160755}
   - component: {fileID: 954160757}
   - component: {fileID: 954160758}
@@ -1011,7 +1012,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d22e71743aafdc34a861da1d756daf99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1754460025793262, guid: 7f5e44b9a50dbf94eae964e9c48b7a33, type: 2}
+  enemies:
+  - {fileID: 1754460025793262, guid: 7f5e44b9a50dbf94eae964e9c48b7a33, type: 2}
+  - {fileID: 1836156328482968, guid: 425aa71f2b7bba94a8bb3723bce3b9df, type: 2}
   minDistanceFromPlayer: 150
   waveEnemies: 15
   spawnDelay: 0.5
@@ -1027,6 +1030,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 1998600898240592, guid: ba7f3da5d5f33f3468faf21b76b42a3a, type: 2}
+--- !u!114 &954160759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 954160754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ac7769b2e460af4aa10cf927591ac82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1022636070
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour {
 
+    public int level;
     public int scoreValue;
 
     private Transform _player;
@@ -44,8 +45,6 @@ public class Enemy : MonoBehaviour {
         if (shark == null)
             return;
 
-        Debug.Log("Game over!");
-        Time.timeScale = 0;
-        GameOverSplash.Show();
+        GameManager.GameOver();
     }
 }

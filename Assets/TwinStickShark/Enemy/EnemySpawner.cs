@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
-    public GameObject enemy;
+    public GameObject[] enemies;
     public float minDistanceFromPlayer;
     public int waveEnemies;
     public float spawnDelay;
@@ -43,8 +44,17 @@ public class EnemySpawner : MonoBehaviour {
         var offset = dir * minDistanceFromPlayer;
         var spawnPos = _playerTransform.position + offset;
 
-        var newEnemy = Instantiate(enemy, spawnPos, Quaternion.identity, null).GetComponent<Enemy>();
-        newEnemy.onDeath.AddListener(() => _enemiesLeft--);
+        var enemyOptions = enemies
+            .Where(e => e.GetComponent<Enemy>().level <= _currentWave)
+            .ToArray();
+        
+        var enemy = Instantiate(
+            enemyOptions[Random.Range(0, enemyOptions.Count())], 
+            spawnPos, 
+            Quaternion.identity, 
+            null).GetComponent<Enemy>();
+
+        enemy.onDeath.AddListener(() => _enemiesLeft--);
         _enemiesLeft++;
     }
 }
