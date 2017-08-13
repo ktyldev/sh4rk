@@ -8,10 +8,12 @@ public class EnemySpawner : MonoBehaviour {
     public float minDistanceFromPlayer;
     public int waveEnemies;
     public float spawnDelay;
-    
+
     private Transform _playerTransform;
     private int _enemiesLeft;
     private int _currentWave = 0;
+
+    public int currentWave { get { return _currentWave; } }
     
     void Start () {
         _playerTransform = GetComponent<Player>().sharkTransform;
