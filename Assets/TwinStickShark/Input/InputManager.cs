@@ -1,22 +1,36 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour {
 
     private static InputManager _instance;
+    public static ControlMode controlMode { get { return _instance.CurrentControlMode(); } }
 
-    public ControlMode controlMode;
+    public GameObject[] controlModes;
 
-    private static Vector3 _move;
-    private static Vector3 _aim;
-
+    private ControlMode[] _controlModes;
+    private int _controlModeIndex;
+    
     void Awake() {
         if (_instance != null) 
-            throw new System.Exception();
+            throw new Exception();
 
         _instance = this;
-        _move = new Vector3();
+        _controlModes = controlModes
+            .Select(InstatiateControlMode)
+            .ToArray();
+            
+    }
+    
+    private ControlMode InstatiateControlMode(GameObject mode) {
+        return Instantiate(mode, transform).GetComponent<ControlMode>();
+    }
+
+    protected ControlMode CurrentControlMode() {
+        return _controlModes[_controlModeIndex];
     }
 
     void Update() {
@@ -29,82 +43,33 @@ public class InputManager : MonoBehaviour {
             ToggleControlMode();
         }    
     }
-
-    public static ControlMode currentControlMode {
-        get {
-            return _instance.controlMode;
-        }
-    }
     
     public static void ToggleControlMode() {
-        if (_instance.controlMode == ControlMode.Gamepad) {
-            _instance.controlMode = ControlMode.MouseKeyboard;
-        } else {
-            _instance.controlMode = ControlMode.Gamepad;
-        }
+        _instance.IterateControlMode();
+    }
+
+    protected void IterateControlMode() {
+        var oldIindex = _controlModeIndex;
+        var newIndex = oldIindex == _controlModes.Length - 1 ? 
+            0 : 
+            oldIindex + 1;
+
+        var oldMode = _controlModes[oldIindex];
+        Destroy(oldMode);
+
+        _controlModes[oldIindex] = InstatiateControlMode(controlModes[oldIindex]);
+        _controlModeIndex = newIndex;
     }
 
     public static Vector3 GetMoveDirection() {
-        switch (_instance.controlMode) {
-            case ControlMode.MouseKeyboard:
-                _move = Vector3.zero;
-
-                if (Input.GetKey(KeyCode.A)) {
-                    _move.x = -1;
-                }
-                if (Input.GetKey(KeyCode.D)) {
-                    _move.x = 1;
-                }
-                if (Input.GetKey(KeyCode.W)) {
-                    _move.z = 1;
-                }
-                if (Input.GetKey(KeyCode.S)) {
-                    _move.z = -1;
-                }
-
-                break;
-            case ControlMode.Gamepad:
-                _move.x = Input.GetAxis("Horizontal");
-                _move.z = Input.GetAxis("Vertical");
-                break;
-        }
-
-        return _move;
+        return controlMode.GetMoveDirection();
     }
 
     public static Vector3 GetAimDirection() {
-        switch (_instance.controlMode) {
-            case ControlMode.MouseKeyboard:
-                var mousePos = Input.mousePosition;
-                
-                mousePos.x -= Screen.width / 2;
-                mousePos.y -= Screen.height / 2;
-
-                _aim.x = -mousePos.y;
-                _aim.z = mousePos.x;
-                _aim.Normalize();
-                break;
-                
-            case ControlMode.Gamepad:
-                _aim.x = Input.GetAxis("RightV");
-                _aim.z = Input.GetAxis("RightH");
-
-                break;
-        }
-
-        return _aim;
+        return controlMode.GetAimDirection();
     }
 
     public static bool Attack() {
-        switch (_instance.controlMode) {
-            case ControlMode.MouseKeyboard:
-                return Input.GetMouseButton(0);
-                
-            case ControlMode.Gamepad:
-                return Input.GetAxis("Attack") == 1;
-
-            default:
-                throw new System.Exception();
-        }
+        return controlMode.Attack();
     }
 }
