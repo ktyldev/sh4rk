@@ -12,7 +12,7 @@ public class ControlModeManager : MonoBehaviour {
     }
 
     void OnGUI() {
-        _text.text = "Space to toggle control mode! Current: " + InputManager.controlMode.controlMode;    
+        _text.text = "Control Mode: " + InputManager.controlMode.controlMode;    
     }
 
     public void ToggleMode() {
