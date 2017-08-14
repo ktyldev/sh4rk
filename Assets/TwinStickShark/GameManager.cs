@@ -6,8 +6,9 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour {
 
     private static GameManager _instance;
-    
-    public Bounds bounds;
+
+    public Bounds movementBounds;
+    public Bounds cameraBounds;
 
     void Awake() {
         if (_instance != null)
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour {
 
         _instance = this;
     }
-    
+
     public static void GameOver() {
         Debug.Log("GameOver!");
         Time.timeScale = 0;
@@ -23,9 +24,10 @@ public class GameManager : MonoBehaviour {
     }
 
     public static Vector3 BindToGameArea(Vector3 position) {
-        if (_instance.bounds.Contains(position))
-            return position;
+        return _instance.movementBounds.Contains(position) ? position : _instance.movementBounds.ClosestPoint(position);
+    }
 
-        return _instance.bounds.ClosestPoint(position);
+    public static Vector3 BindToCameraGameArea(Vector3 position) {
+        return _instance.cameraBounds.Contains(position) ? position : _instance.cameraBounds.ClosestPoint(position);
     }
 }

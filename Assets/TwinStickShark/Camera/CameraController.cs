@@ -14,6 +14,6 @@ public class CameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = trackedObject.position + offset;
+        transform.position = GameManager.BindToCameraGameArea(trackedObject.position) + offset;
 	}
 }

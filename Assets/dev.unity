@@ -1125,9 +1125,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac7769b2e460af4aa10cf927591ac82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounds:
+  movementBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 600, y: 20, z: 600}
+  cameraBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 575, y: 100, z: 580}
 --- !u!114 &954160760
 MonoBehaviour:
   m_ObjectHideFlags: 0
