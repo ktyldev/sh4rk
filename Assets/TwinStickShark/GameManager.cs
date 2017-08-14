@@ -7,10 +7,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     private static GameManager _instance;
-
+    
     public int resetTimer;
     public Bounds movementBounds;
     public Bounds cameraBounds;
+    //public GameObject inputManager;
+    //public GameObject uiManager;
+
+    protected bool isPaused = false;
+    public static bool paused { get { return _instance.isPaused; } }
 
     void Awake() {
         if (_instance != null)
@@ -19,6 +24,11 @@ public class GameManager : MonoBehaviour {
         _instance = this;
     }
 
+    public static void TogglePause() {
+        _instance.isPaused = !_instance.isPaused;
+        Time.timeScale = paused ? 0 : 1;    
+    }
+    
     public static void GameOver() {
         Debug.Log("GameOver!");
         Time.timeScale = 0;

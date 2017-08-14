@@ -20,6 +20,11 @@ public class InputManager : MonoBehaviour {
     }
 
     void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape) ||  Input.GetKeyDown(KeyCode.Joystick1Button7)) {
+            GameManager.TogglePause();
+            UIManager.TogglePause();
+        }
+
         if (Input.GetKeyDown(KeyCode.Space)) {
             ToggleControlMode();
         }    
@@ -30,12 +35,12 @@ public class InputManager : MonoBehaviour {
             return _instance.controlMode;
         }
     }
-
-    private void ToggleControlMode() {
-        if (controlMode == ControlMode.Gamepad) {
-            controlMode = ControlMode.MouseKeyboard;
+    
+    public static void ToggleControlMode() {
+        if (_instance.controlMode == ControlMode.Gamepad) {
+            _instance.controlMode = ControlMode.MouseKeyboard;
         } else {
-            controlMode = ControlMode.Gamepad;
+            _instance.controlMode = ControlMode.Gamepad;
         }
     }
 
