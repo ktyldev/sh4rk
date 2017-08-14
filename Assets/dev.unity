@@ -418,7 +418,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graphic: {fileID: 1440457364922440, guid: e3ed91c8c9f30b047a0f3fca9c97ff9a, type: 2}
-  resetTimer: 5
 --- !u!1 &321015029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,6 +1124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac7769b2e460af4aa10cf927591ac82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetTimer: 5
   movementBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 600, y: 20, z: 600}

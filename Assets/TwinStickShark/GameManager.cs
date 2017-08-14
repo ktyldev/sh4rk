@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
     private static GameManager _instance;
 
+    public int resetTimer;
     public Bounds movementBounds;
     public Bounds cameraBounds;
 
@@ -21,6 +23,18 @@ public class GameManager : MonoBehaviour {
         Debug.Log("GameOver!");
         Time.timeScale = 0;
         GameOverSplash.Show();
+        _instance.Reload();
+    }
+
+    protected void Reload() {
+        StartCoroutine(ReloadLevel());
+    }
+
+    private IEnumerator ReloadLevel() {
+        var scene = SceneManager.GetActiveScene().buildIndex;
+        yield return new WaitForSecondsRealtime(resetTimer);
+        Time.timeScale = 1;
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 
     public static Vector3 BindToGameArea(Vector3 position) {
