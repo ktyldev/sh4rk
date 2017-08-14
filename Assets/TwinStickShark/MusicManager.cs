@@ -8,8 +8,13 @@ public class MusicManager : MonoBehaviour {
 
     public GameObject intro;
     public GameObject loop;
+    
+    private AudioSource _intro;
+    private AudioSource _loop;
 
-    private AudioSource _audio;
+    public static float volume { get; protected set; }
+
+    private bool _looping;
 
     void Awake() {
         if (_instance != null && _instance != this) {
@@ -17,15 +22,32 @@ public class MusicManager : MonoBehaviour {
             return;
         }
 
+        volume = 1;
         _instance = this;
         DontDestroyOnLoad(gameObject);
     }
+    
+    void OnGUI() {
+        (_looping ? _loop : _intro).volume = volume;
+    }
 
-    // Use this for initialization
     void Start() {
-        var introAudio = Instantiate(intro, transform).GetComponent<AudioSource>();
+        _intro = Instantiate(intro, transform).GetComponent<AudioSource>();
+        var introLength = _intro.clip.length;
+        Destroy(_intro, introLength);
+        
+        _loop = Instantiate(loop, transform).GetComponent<AudioSource>();
+        _loop.PlayDelayed(introLength);
+        StartCoroutine(SwitchToLoop(introLength));
+    }
 
-        _audio = Instantiate(loop, transform).GetComponent<AudioSource>();
-        _audio.PlayDelayed(introAudio.clip.length);
+    public IEnumerator SwitchToLoop(float delay) {
+        yield return new WaitForSecondsRealtime(delay);
+        _looping = true;
+    }
+    
+    public static void SetVolume(float value) {
+        print(volume);
+        volume = value;    
     }
 }
