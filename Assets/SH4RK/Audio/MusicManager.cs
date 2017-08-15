@@ -6,6 +6,7 @@ public class MusicManager : MonoBehaviour {
 
     private static MusicManager _instance;
 
+    public float defaultVolume;
     public GameObject intro;
     public GameObject loop;
     
@@ -21,8 +22,7 @@ public class MusicManager : MonoBehaviour {
             Destroy(gameObject);
             return;
         }
-
-        volume = 1;
+        
         _instance = this;
         DontDestroyOnLoad(gameObject);
     }
@@ -32,7 +32,10 @@ public class MusicManager : MonoBehaviour {
     }
 
     void Start() {
+        volume = defaultVolume;
+
         _intro = Instantiate(intro, transform).GetComponent<AudioSource>();
+        _intro.volume = volume;
         var introLength = _intro.clip.length;
         Destroy(_intro, introLength);
         
