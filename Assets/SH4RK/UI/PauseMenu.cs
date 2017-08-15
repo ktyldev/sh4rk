@@ -13,4 +13,9 @@ public class PauseMenu : MonoBehaviour {
         _slider.value = MusicManager.volume;
         _slider.onValueChanged.AddListener(MusicManager.SetVolume);
 	}
+
+    public void Quit() {
+        print("Quit");
+        Application.Quit();
+    }
 }
