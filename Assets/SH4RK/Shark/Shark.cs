@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Shark : MonoBehaviour {
-
-    public GameObject mount;
-
+    
     private Mover _mover;
     private WeaponMount _mount;
     
@@ -17,10 +15,7 @@ public class Shark : MonoBehaviour {
 
     void Awake() {
         _mover = GetComponent<Mover>();
-    }
-    
-    void Start() {
-        _mount = Instantiate(mount, transform).GetComponent<WeaponMount>();
+        _mount = GetComponentInChildren<WeaponMount>();
     }
     
     void Update() {

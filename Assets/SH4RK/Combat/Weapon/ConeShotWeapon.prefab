@@ -307,6 +307,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45475440498e2af47bd5d06b07e2e69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pewPewNoise: {fileID: 1095422406062146, guid: d03a44feaa14cfb45b3495c120c258f3,
+    type: 2}
   projectile: {fileID: 1271776551263988, guid: ac66f656ff4a38148a91741eb9a16ab0, type: 2}
   projectileSpawns:
   - {fileID: 4714601924920710}

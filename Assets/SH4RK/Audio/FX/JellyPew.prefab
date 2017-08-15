@@ -9,30 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1095422406062146}
+  m_RootGameObject: {fileID: 1372524772145464}
   m_IsPrefabParent: 1
---- !u!1 &1095422406062146
+--- !u!1 &1372524772145464
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4817007728217430}
-  - component: {fileID: 82608049855379016}
+  - component: {fileID: 4802935384292052}
+  - component: {fileID: 82397159670219110}
   m_Layer: 0
-  m_Name: MainPew
+  m_Name: JellyPew
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4817007728217430
+--- !u!4 &4802935384292052
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1095422406062146}
+  m_GameObject: {fileID: 1372524772145464}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,18 +40,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &82608049855379016
+--- !u!82 &82397159670219110
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1095422406062146}
+  m_GameObject: {fileID: 1372524772145464}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4dcfda2e62ac9c64d9ada3a366625933, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9d7b357274a36f84baaad83da30a44e2, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0

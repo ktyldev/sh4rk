@@ -347,4 +347,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hardPoints:
   - {fileID: 4213346637311306}
-  weapon: {fileID: 1414787140538884, guid: 4c68f5a8d5a360f4994650aafb182115, type: 2}
+  mainWeapon: {fileID: 1414787140538884, guid: 4c68f5a8d5a360f4994650aafb182115, type: 2}
