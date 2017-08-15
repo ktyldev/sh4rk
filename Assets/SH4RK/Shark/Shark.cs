@@ -27,6 +27,10 @@ public class Shark : MonoBehaviour {
         Move();
     }
 
+    public void PowerupWeapon(GameObject weapon) {
+        _mount.SetPowerupWeapon(weapon);
+    }
+
     private void Move() {
         _mover.SetDirection(InputManager.controlMode.GetMoveDirection());
     }

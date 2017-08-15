@@ -1,16 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class Weapon : MonoBehaviour {
     
     public GameObject projectile;
-    public Transform projectileSpawn;
-
+    public Transform[] projectileSpawns;
     public float shotDelay = 1;
 
+    public UnityEvent onFire { get; private set; }
+
     private bool _firing;
-    
+
+    private void Awake() {
+        onFire = new UnityEvent();
+    }
+
     // Update is called once per frame
     void Update() {
         Rotate();
@@ -26,7 +32,11 @@ public abstract class Weapon : MonoBehaviour {
     
     private IEnumerator Fire() {
         while (GetIsFiring()) {
-            Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation, null);
+            onFire.Invoke();
+
+            foreach (var spawn in projectileSpawns) {
+                Instantiate(projectile, spawn.position, spawn.rotation, null);
+            }
             yield return new WaitForSeconds(shotDelay);
         }
 

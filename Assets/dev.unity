@@ -888,7 +888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecd6cc03739f6f74faea694be42f9eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeMagnitude: 4.2
+  shakeMagnitude: 3.5
   focus: {fileID: 417008836}
   lerp: 0.5
 --- !u!114 &504954779
@@ -1156,7 +1156,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &954160757
 MonoBehaviour:
@@ -1169,6 +1169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d22e71743aafdc34a861da1d756daf99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerup: {fileID: 1546447982274208, guid: 8bf592e4bc765714f98f03992fcd970f, type: 2}
   enemies:
   - {fileID: 1754460025793262, guid: 7f5e44b9a50dbf94eae964e9c48b7a33, type: 2}
   - {fileID: 1836156328482968, guid: 425aa71f2b7bba94a8bb3723bce3b9df, type: 2}
@@ -1589,7 +1590,7 @@ Transform:
   - {fileID: 1865978959}
   - {fileID: 2111555690}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1264951309
 GameObject:

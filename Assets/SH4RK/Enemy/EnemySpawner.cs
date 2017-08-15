@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
+    // MOVE THIS
+    public GameObject powerup;
+
     public GameObject[] enemies;
     public float minDistanceFromPlayer;
     public int waveEnemies;
@@ -36,7 +39,20 @@ public class EnemySpawner : MonoBehaviour {
             yield return new WaitForSeconds(spawnDelay);
         }
 
+        for (int i = 0; i < waveNumber; i++) {
+            SpawnPowerup();
+        }
+
         Debug.Log("Finished spawning wave " + waveNumber);
+    }
+
+    private void SpawnPowerup() {
+        var angle = Random.rotation.eulerAngles.y;
+        var dir = new Vector3(Mathf.Sin(Mathf.Deg2Rad * angle), 0, Mathf.Cos(Mathf.Deg2Rad * angle));
+        var offset = dir * minDistanceFromPlayer;
+        var spawnPos = _playerTransform.position + offset;
+
+        Instantiate(powerup, spawnPos, Quaternion.identity, null);
     }
 
     private void SpawnEnemy() {

@@ -240,4 +240,4 @@ MonoBehaviour:
   hardPoints:
   - {fileID: 4317144486808458}
   - {fileID: 4655382012780342}
-  weapon: {fileID: 1034961729532858, guid: 6811385ace0972e49ae1d6bd3271159d, type: 2}
+  mainWeapon: {fileID: 1034961729532858, guid: 6811385ace0972e49ae1d6bd3271159d, type: 2}
