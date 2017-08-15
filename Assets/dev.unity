@@ -1146,8 +1146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlModes:
-  - {fileID: 1946089924149008, guid: 7361512fe20260a4b98808afdfda0c72, type: 2}
   - {fileID: 1553922834857474, guid: b98eb65c179e8cb4ca2daf62920ae884, type: 2}
+  - {fileID: 1946089924149008, guid: 7361512fe20260a4b98808afdfda0c72, type: 2}
 --- !u!1 &986627981
 GameObject:
   m_ObjectHideFlags: 0
