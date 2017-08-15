@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour {
     public Transform trackedObject { get; set; }
     public float shakeMagnitude;
     public GameObject focus;
+    public float lerp;
 
     private bool _shake = false;
     private Vector3 _offset;
@@ -20,7 +21,7 @@ public class CameraController : MonoBehaviour {
         if (trackedObject == null)
             return;
 
-        focus.transform.position = GameManager.BindToCameraGameArea(trackedObject.transform.position);
+        focus.transform.position = Vector3.Lerp(focus.transform.position, GameManager.BindToCameraGameArea(trackedObject.transform.position), lerp);
     }
 
     void OnGUI() {

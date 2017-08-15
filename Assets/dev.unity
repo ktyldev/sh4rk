@@ -890,6 +890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeMagnitude: 4.2
   focus: {fileID: 417008836}
+  lerp: 0.5
 --- !u!114 &504954779
 MonoBehaviour:
   m_ObjectHideFlags: 0
