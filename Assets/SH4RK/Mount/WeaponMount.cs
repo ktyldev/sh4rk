@@ -27,7 +27,7 @@ public class WeaponMount : MonoBehaviour {
     }
 
     void Update() {
-        if (_powerUpWeapons == null)
+        if (_powerUpWeapons == null || !_powerUpWeapons.Any())
             return;
         
         if (_powerUpShotsRemaining == 0) {

@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public abstract class Weapon : MonoBehaviour {
-    
+
+    public GameObject pewPewNoise;
     public GameObject projectile;
     public Transform[] projectileSpawns;
     public float shotDelay = 1;
@@ -33,6 +34,7 @@ public abstract class Weapon : MonoBehaviour {
     private IEnumerator Fire() {
         while (GetIsFiring()) {
             onFire.Invoke();
+            Instantiate(pewPewNoise, transform);
 
             foreach (var spawn in projectileSpawns) {
                 Instantiate(projectile, spawn.position, spawn.rotation, null);
