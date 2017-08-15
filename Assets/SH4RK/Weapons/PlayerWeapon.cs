@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class PlayerWeapon : Weapon {
     protected override bool GetIsFiring() {
-        return InputManager.Attack();
+        return InputManager.controlMode.Attack();
     }
 
     protected override Vector3 GetDir() {
-        return InputManager.GetAimDirection();
+        return InputManager.controlMode.GetAimDirection();
     }
 }
 

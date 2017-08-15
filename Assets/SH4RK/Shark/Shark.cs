@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Shark : MonoBehaviour {
-    
+
     public GameObject mount;
-    
+
     private Mover _mover;
+    private WeaponMount _mount;
+    
+    public Weapon weapon {
+        get {
+            return _mount.currentWeapon;
+        }
+    }
 
     void Awake() {
         _mover = GetComponent<Mover>();
     }
     
     void Start() {
-        Instantiate(mount, transform);
+        _mount = Instantiate(mount, transform).GetComponent<WeaponMount>();
     }
     
     void Update() {
@@ -21,6 +28,6 @@ public class Shark : MonoBehaviour {
     }
 
     private void Move() {
-        _mover.SetDirection(InputManager.GetMoveDirection());
+        _mover.SetDirection(InputManager.controlMode.GetMoveDirection());
     }
 }

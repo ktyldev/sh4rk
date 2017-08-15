@@ -10,6 +10,7 @@ public class WeaponMount : MonoBehaviour {
     public GameObject weapon;
 
     private Weapon[] _weapons;
+    public Weapon currentWeapon { get { return _weapons.First(); } }
 
     void Start() {
         _weapons = hardPoints

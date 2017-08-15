@@ -8,9 +8,9 @@ public class Player : MonoBehaviour {
 
     public GameObject shark;
 
-    private Shark _shark;
+    public Shark currentShark { get; private set; }
 
-    public Transform sharkTransform { get { return _shark.transform; } }
+    public Transform sharkTransform { get { return currentShark.transform; } }
     public int score { get; private set; }
 
     void Awake() {
@@ -18,11 +18,11 @@ public class Player : MonoBehaviour {
             throw new System.Exception();
 
         instance = this;
-        _shark = Instantiate(shark).GetComponent<Shark>();
+        currentShark = Instantiate(shark).GetComponent<Shark>();
     }
     
     void Start() {
-        Camera.main.GetComponent<CameraController>().trackedObject = _shark.transform;
+        Camera.main.GetComponent<CameraController>().trackedObject = currentShark.transform;
     }
 
     public void AddScore(int amount) {

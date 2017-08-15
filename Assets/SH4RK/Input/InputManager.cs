@@ -65,16 +65,4 @@ public class InputManager : MonoBehaviour {
         _controlModes[oldIindex] = InstatiateControlMode(controlModes[oldIindex]);
         _controlModeIndex = newIndex;
     }
-
-    public static Vector3 GetMoveDirection() {
-        return controlMode.GetMoveDirection();
-    }
-
-    public static Vector3 GetAimDirection() {
-        return controlMode.GetAimDirection();
-    }
-
-    public static bool Attack() {
-        return controlMode.Attack();
-    }
 }
