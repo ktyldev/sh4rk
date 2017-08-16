@@ -1126,6 +1126,7 @@ GameObject:
   - component: {fileID: 954160755}
   - component: {fileID: 954160757}
   - component: {fileID: 954160758}
+  - component: {fileID: 954160760}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -1169,14 +1170,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d22e71743aafdc34a861da1d756daf99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerup: {fileID: 1546447982274208, guid: 8bf592e4bc765714f98f03992fcd970f, type: 2}
-  enemies:
+  templates:
+  - {fileID: 1268101036278190, guid: b304fb5f502574242aa4ff66511a452e, type: 2}
   - {fileID: 1754460025793262, guid: 7f5e44b9a50dbf94eae964e9c48b7a33, type: 2}
   - {fileID: 1836156328482968, guid: 425aa71f2b7bba94a8bb3723bce3b9df, type: 2}
-  - {fileID: 1268101036278190, guid: b304fb5f502574242aa4ff66511a452e, type: 2}
   minDistanceFromPlayer: 150
-  waveEnemies: 15
   spawnDelay: 0.5
+  waveEnemies: 15
 --- !u!114 &954160758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,6 +1207,21 @@ MonoBehaviour:
   cameraBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 575, y: 100, z: 580}
+--- !u!114 &954160760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 954160754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fbc8429163c17e4db344a7abffa26cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  templates:
+  - {fileID: 1546447982274208, guid: 8bf592e4bc765714f98f03992fcd970f, type: 2}
+  minDistanceFromPlayer: 150
+  spawnDelay: 15
 --- !u!1 &986627981
 GameObject:
   m_ObjectHideFlags: 0
