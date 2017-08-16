@@ -22,8 +22,8 @@ public class Shark : MonoBehaviour {
         Move();
     }
 
-    public void PowerupWeapon(GameObject weapon) {
-        _mount.SetPowerupWeapon(weapon);
+    public void PowerupWeapon(GameObject weapon, int shots) {
+        _mount.SetPowerupWeapon(weapon, shots);
     }
 
     private void Move() {

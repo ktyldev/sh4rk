@@ -232,6 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 1653911795455408, guid: 99709309f20b36e48bd0ff69289e0377, type: 2}
+  shots: 10
 --- !u!135 &135190740596060818
 SphereCollider:
   m_ObjectHideFlags: 1

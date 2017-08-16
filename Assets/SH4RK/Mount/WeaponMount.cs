@@ -30,22 +30,24 @@ public class WeaponMount : MonoBehaviour {
         if (_powerUpWeapons == null || !_powerUpWeapons.Any())
             return;
         
-        if (_powerUpShotsRemaining == 0) {
+        if (_powerUpShotsRemaining <= 0) {
             SetMainWeapon();
         }
 
         print(_powerUpShotsRemaining / hardPoints.Length);
     }
 
-    public void SetPowerupWeapon(GameObject powerupWeapon) {
-        foreach (var wep in _mainWeapons) {
-            print("disable main");
-            Destroy(wep.gameObject);
+    public void SetPowerupWeapon(GameObject powerupWeapon, int shots) {
+        if (_mainWeapons != null) {
+            foreach (var wep in _mainWeapons) {
+                print("disable main");
+                Destroy(wep.gameObject);
+            }
         }
 
         _powerUpWeapons = InstantiateWeapons(powerupWeapon);
         _weapons = _powerUpWeapons;
-        _powerUpShotsRemaining = _powerUpShots * hardPoints.Length;
+        _powerUpShotsRemaining += shots * hardPoints.Length;
 
         _powerUpWeapons
             .ToList()
