@@ -13,6 +13,9 @@ public class Shark : MonoBehaviour {
         }
     }
 
+    public bool isShielded { get { return _shield != null; } }
+    private Shield _shield;
+
     void Awake() {
         _mover = GetComponent<Mover>();
         _mount = GetComponentInChildren<WeaponMount>();
@@ -26,7 +29,18 @@ public class Shark : MonoBehaviour {
         _mount.SetPowerupWeapon(weapon, shots);
     }
 
+    public void SetShield(Shield shield) {
+        _shield = shield;
+    }
+
+    public void DestroyShield() {
+        Destroy(_shield.gameObject);
+        _shield = null;
+    }
+
     private void Move() {
         _mover.SetDirection(InputManager.controlMode.GetMoveDirection());
     }
+
+    
 }

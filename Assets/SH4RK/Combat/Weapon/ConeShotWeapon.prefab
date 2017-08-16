@@ -314,4 +314,4 @@ MonoBehaviour:
   - {fileID: 4714601924920710}
   - {fileID: 4062623492560416}
   - {fileID: 4511131783955648}
-  shotDelay: 0.3
+  shotDelay: 0.1

@@ -25,7 +25,7 @@ public abstract class Shot : MonoBehaviour {
 
     protected abstract bool ValidateHit(GameObject obj);
     protected abstract void OnHit(GameObject hitObject);
-
+    
     private void OnTriggerEnter(Collider other) {
         if (!ValidateHit(other.gameObject))
             return;

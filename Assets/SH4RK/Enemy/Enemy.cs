@@ -41,15 +41,15 @@ public class Enemy : MonoBehaviour {
     }
     
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.GetComponent<Shield>()) {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-            return;
-        }
-
         var shark = other.gameObject.GetComponent<Shark>();
         if (shark == null)
             return;
+
+        if (shark.isShielded) {
+            Destroy(gameObject);
+            shark.DestroyShield();
+            return;
+        }
 
         GameManager.GameOver();
     }

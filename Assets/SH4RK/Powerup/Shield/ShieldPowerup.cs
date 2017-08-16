@@ -9,7 +9,13 @@ public class ShieldPowerup : Powerup {
     public GameObject shield;
 
     protected override void OnPickup(Shark shark) {
-        var newShield = Instantiate(shield).GetComponent<Shield>();
-        newShield.SetTarget(shark.transform);
+        if (shark.isShielded) {
+            Destroy(gameObject);
+            return;
+        }
+        
+        Instantiate(shield)
+            .GetComponent<Shield>()
+            .SetTarget(shark);
     }
 }

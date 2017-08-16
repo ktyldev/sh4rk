@@ -36,7 +36,6 @@ public class WeaponMount : MonoBehaviour {
     public void SetPowerupWeapon(GameObject powerupWeapon, int shots) {
         if (_mainWeapons != null) {
             foreach (var wep in _mainWeapons) {
-                print("disable main");
                 Destroy(wep.gameObject);
             }
         }
@@ -58,9 +57,7 @@ public class WeaponMount : MonoBehaviour {
                 Destroy(wep.gameObject);
             }
         }
-
-        print(mainWeapon);
-
+        
         _mainWeapons = InstantiateWeapons(mainWeapon);
         _weapons = _mainWeapons;
 

@@ -12,8 +12,9 @@ public class Shield : MonoBehaviour {
         transform.position = _target.position;
         transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
     }
-
-    internal void SetTarget(Transform transform) {
-        _target = transform;
+    
+    public void SetTarget(Shark shark) {
+        _target = shark.transform;
+        shark.SetShield(this);
     }
 }

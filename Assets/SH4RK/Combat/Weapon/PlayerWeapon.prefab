@@ -254,4 +254,4 @@ MonoBehaviour:
   projectile: {fileID: 1681999096615736, guid: 195373eeebbee7c49b8b52f750b8b9d0, type: 2}
   projectileSpawns:
   - {fileID: 4000401354668100}
-  shotDelay: 0.1
+  shotDelay: 0.3
