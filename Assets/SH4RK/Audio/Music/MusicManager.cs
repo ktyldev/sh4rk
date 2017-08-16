@@ -13,7 +13,7 @@ public class MusicManager : MonoBehaviour {
     private AudioSource _intro;
     private AudioSource _loop;
 
-    public static float volume { get; protected set; }
+    public static float volume { get; private set; }
 
     private bool _looping;
 

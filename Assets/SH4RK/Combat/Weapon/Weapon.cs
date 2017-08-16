@@ -34,7 +34,7 @@ public abstract class Weapon : MonoBehaviour {
     private IEnumerator Fire() {
         while (GetIsFiring()) {
             onFire.Invoke();
-            Instantiate(pewPewNoise, transform);
+            FXManager.PlaySound(pewPewNoise);
 
             foreach (var spawn in projectileSpawns) {
                 Instantiate(projectile, spawn.position, spawn.rotation, null);

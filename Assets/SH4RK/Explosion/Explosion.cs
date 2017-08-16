@@ -7,6 +7,7 @@ public class Explosion : MonoBehaviour {
 
     public GameObject[] frames;
     public float frameDelay;
+    public GameObject splodeSound;
     
     private GameObject[] _frames;
 
@@ -19,6 +20,8 @@ public class Explosion : MonoBehaviour {
     }
 
     private IEnumerator Explode() {
+        FXManager.PlaySound(splodeSound);
+
         for (int i = 0; i < frames.Length; i++) {
             _frames[i] = Instantiate(frames[i], transform);
 
