@@ -1219,9 +1219,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   templates:
+  - {fileID: 1216005530738024, guid: 585c8f3e5e023eb4fbb189b012b0d7f7, type: 2}
   - {fileID: 1546447982274208, guid: 8bf592e4bc765714f98f03992fcd970f, type: 2}
   - {fileID: 1699154534068836, guid: 56b0fb9cba7bafa4397fc7821dad1523, type: 2}
-  - {fileID: 1216005530738024, guid: 585c8f3e5e023eb4fbb189b012b0d7f7, type: 2}
   minDistanceFromPlayer: 150
   spawnDelay: 15
 --- !u!1 &986627981

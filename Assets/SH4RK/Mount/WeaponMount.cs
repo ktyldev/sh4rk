@@ -38,10 +38,10 @@ public class WeaponMount : MonoBehaviour {
             foreach (var wep in _mainWeapons) {
                 Destroy(wep.gameObject);
             }
+            _powerUpWeapons = InstantiateWeapons(powerupWeapon);
+            _weapons = _powerUpWeapons;
         }
 
-        _powerUpWeapons = InstantiateWeapons(powerupWeapon);
-        _weapons = _powerUpWeapons;
         _powerUpShotsRemaining += shots * hardPoints.Length;
 
         _powerUpWeapons
