@@ -1,17 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour {
-    
-    private Slider _slider;
+
+    public GameObject musicVolume;
+    public GameObject fxVolume;
+
+    private Slider _music;
+    private Slider _fx;
     
 	void Awake () {
-        _slider = GetComponentInChildren<Slider>();
+        _music = musicVolume.GetComponent<Slider>();
+        _music.value = MusicManager.volume;
+        _music.onValueChanged.AddListener(MusicManager.SetVolume);
 
-        _slider.value = MusicManager.volume;
-        _slider.onValueChanged.AddListener(MusicManager.SetVolume);
+        _fx = fxVolume.GetComponent<Slider>();
+        _fx.value = FXManager.volume;
+        _fx.onValueChanged.AddListener(FXManager.SetVolume);
 	}
 
     public void Quit() {

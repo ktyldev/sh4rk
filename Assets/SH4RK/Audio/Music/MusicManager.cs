@@ -50,7 +50,6 @@ public class MusicManager : MonoBehaviour {
     }
     
     public static void SetVolume(float value) {
-        print(volume);
         volume = value;    
     }
 }

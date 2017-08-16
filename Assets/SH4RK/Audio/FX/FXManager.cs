@@ -27,4 +27,8 @@ public class FXManager : MonoBehaviour {
         audio.volume *= volume;
         audio.Play();
     }
+
+    public static void SetVolume(float value) {
+        volume = value;
+    }
 }
