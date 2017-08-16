@@ -12,6 +12,9 @@ public class EnemyShot : Shot {
         var root = obj.transform.root;
 
         do {
+            if (obj.GetComponent<Shield>() != null)
+                return true;
+
             if (obj.GetComponent<Shark>() != null)
                 return true;
 

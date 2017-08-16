@@ -1220,6 +1220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   templates:
   - {fileID: 1546447982274208, guid: 8bf592e4bc765714f98f03992fcd970f, type: 2}
+  - {fileID: 1699154534068836, guid: 56b0fb9cba7bafa4397fc7821dad1523, type: 2}
   minDistanceFromPlayer: 150
   spawnDelay: 15
 --- !u!1 &986627981
@@ -1924,7 +1925,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1865978958}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2140879316}
