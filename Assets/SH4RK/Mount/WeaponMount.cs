@@ -42,11 +42,12 @@ public class WeaponMount : MonoBehaviour {
             _weapons = _powerUpWeapons;
         }
 
-        _powerUpShotsRemaining += shots * hardPoints.Length;
+        _powerUpShotsRemaining += shots;
 
         _powerUpWeapons
-            .ToList()
-            .ForEach(w => w.onFire.AddListener(() => _powerUpShotsRemaining--));
+            .First()
+            .onFire
+            .AddListener(() => _powerUpShotsRemaining--);
 
         _mainWeapons = null;
     }
