@@ -281,3 +281,4 @@ MonoBehaviour:
   projectileSpawns:
   - {fileID: 4756879877208716}
   shotDelay: 3
+  engagementRange: 100

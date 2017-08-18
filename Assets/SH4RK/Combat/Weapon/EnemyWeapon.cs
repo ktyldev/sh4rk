@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class EnemyWeapon : Weapon {
 
+    public float engagementRange;
     private Transform _target;
     
     void Start() {
@@ -17,6 +18,6 @@ public class EnemyWeapon : Weapon {
     }
 
     protected override bool GetIsFiring() {
-        return true;
+        return Vector3.Distance(transform.position, _target.transform.position) < engagementRange;
     }
 }
