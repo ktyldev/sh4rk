@@ -8,6 +8,11 @@ public class BoostPowerup : Powerup {
     public GameObject boost;
 
     protected override void OnPickup(Shark shark) {
+        if (shark.GetComponentInChildren<Boost>()) {
+            Destroy(gameObject);
+            return;
+        }
+
         Instantiate(boost, shark.transform);
     }
 }
