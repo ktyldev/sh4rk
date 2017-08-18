@@ -4,9 +4,14 @@ using UnityEngine;
 
 public abstract class Powerup : MonoBehaviour {
 
+    public float life = 30;
     private int _rotationSpeed = 40;
-    
-	void Update () {
+
+    void Start() {
+        Destroy(gameObject, life);
+    }
+
+    void Update () {
         transform.Rotate(Vector3.up, _rotationSpeed * Time.deltaTime);
 	}
     
