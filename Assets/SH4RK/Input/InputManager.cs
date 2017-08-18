@@ -43,10 +43,6 @@ public class InputManager : MonoBehaviour {
             GameManager.TogglePause();
             UIManager.TogglePause();
         }
-
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            ToggleControlMode();
-        }    
     }
     
     public static void ToggleControlMode() {
