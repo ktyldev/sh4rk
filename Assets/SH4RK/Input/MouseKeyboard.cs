@@ -38,6 +38,6 @@ public class MouseKeyboard : ControlMode {
             move.z--;
         }
 
-        return move;
+        return move.normalized;
     }
 }
