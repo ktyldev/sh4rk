@@ -11,9 +11,7 @@ public class GameManager : MonoBehaviour {
     public int resetTimer;
     public Bounds movementBounds;
     public Bounds cameraBounds;
-    //public GameObject inputManager;
-    //public GameObject uiManager;
-
+    
     protected bool isPaused = false;
     public static bool paused { get { return _instance.isPaused; } }
 
@@ -30,8 +28,8 @@ public class GameManager : MonoBehaviour {
     }
     
     public static void GameOver() {
+        TogglePause();
         Debug.Log("GameOver!");
-        Time.timeScale = 0;
         GameOverSplash.Show();
         _instance.Reload();
     }
@@ -43,7 +41,7 @@ public class GameManager : MonoBehaviour {
     private IEnumerator ReloadLevel() {
         var scene = SceneManager.GetActiveScene().buildIndex;
         yield return new WaitForSecondsRealtime(resetTimer);
-        Time.timeScale = 1;
+        TogglePause();
         SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 
