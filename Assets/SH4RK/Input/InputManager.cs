@@ -8,11 +8,14 @@ public class InputManager : MonoBehaviour {
 
     private static InputManager _instance;
     public static ControlMode controlMode { get { return _instance.CurrentControlMode(); } }
-
+    
     public GameObject[] controlModes;
+    public GameObject pauseMode;
 
     private ControlMode[] _controlModes;
+    private Pause _pauseMode;
     private int _controlModeIndex;
+    private bool _paused;
     
     void Awake() {
         if (_instance != null && _instance != this) {
@@ -28,6 +31,8 @@ public class InputManager : MonoBehaviour {
         _controlModes = controlModes
             .Select(InstatiateControlMode)
             .ToArray();
+
+        _pauseMode = (Pause)InstatiateControlMode(pauseMode);
     }
 
     private ControlMode InstatiateControlMode(GameObject mode) {
@@ -35,13 +40,18 @@ public class InputManager : MonoBehaviour {
     }
 
     protected ControlMode CurrentControlMode() {
-        return _controlModes[_controlModeIndex];
+        return _paused ? _pauseMode : _controlModes[_controlModeIndex];
     }
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape) ||  Input.GetKeyDown(KeyCode.Joystick1Button7)) {
+            _paused = !_paused;
             GameManager.TogglePause();
             UIManager.TogglePause();
+        }
+
+        if (_paused) {
+            _pauseMode.SetPausedMode(_controlModes[_controlModeIndex]);
         }
     }
     
