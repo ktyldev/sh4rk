@@ -41,6 +41,4 @@ public class Shark : MonoBehaviour {
     private void Move() {
         _mover.SetDirection(InputManager.controlMode.GetMoveDirection());
     }
-
-    
 }

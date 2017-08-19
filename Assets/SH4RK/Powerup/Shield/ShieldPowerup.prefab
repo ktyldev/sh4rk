@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4641620604439730}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4760381780003510}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: powerup_shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,8 @@ GameObject:
   - component: {fileID: 4071403123850210}
   - component: {fileID: 114214558256127628}
   - component: {fileID: 135610495641543506}
-  m_Layer: 0
+  - component: {fileID: 54183891860817578}
+  m_Layer: 11
   m_Name: ShieldPowerup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +69,7 @@ GameObject:
   - component: {fileID: 4893059311648376}
   - component: {fileID: 33838189072388490}
   - component: {fileID: 23009557759727064}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,6 +170,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1766480858041882}
   m_Mesh: {fileID: 4300000, guid: ebe6458977398f54ea7a082ad0d4245b, type: 3}
+--- !u!54 &54183891860817578
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1699154534068836}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!114 &114214558256127628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,6 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847b6d9b43259b7409e0d26ea050cb8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 30
   shield: {fileID: 1043692506400604, guid: 2b69bbc2d4d4db340ba7f39d0712c9d3, type: 2}
 --- !u!135 &135610495641543506
 SphereCollider:
@@ -188,7 +205,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1699154534068836}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 6.28

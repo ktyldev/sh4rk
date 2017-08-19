@@ -5,15 +5,13 @@ using System.Text;
 using UnityEngine;
 
 public class MouseKeyboard : ControlMode {
-
-    private Transform _target;
+    
     private Plane _hitPlane;
 
     void Start() {
-        _target = Player.instance.sharkTransform;
         _hitPlane = new Plane(Vector3.up, Vector3.zero);
     }
-
+    
     public override string controlMode {
         get { return "Mouse & Keyboard"; }
     }
@@ -33,7 +31,7 @@ public class MouseKeyboard : ControlMode {
             return Vector3.zero;
         }
 
-        var dir = aimPos - _target.position;
+        var dir = aimPos - Player.instance.sharkTransform.position;
 
         return  new Vector3(-dir.z, 0, dir.x).normalized;
     }

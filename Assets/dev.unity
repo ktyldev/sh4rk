@@ -1266,7 +1266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f28ec677f4cc9ef4b9b54c442f14b687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultVolume: 0.5
+  defaultVolume: 0
   intro: {fileID: 1320782896391578, guid: 2531f4c22ab504645923b31bf8ac611d, type: 2}
   loop: {fileID: 1937057597859022, guid: 0c54d99d776849a449d52247aef44e04, type: 2}
 --- !u!114 &986627984
