@@ -4,24 +4,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Shark : MonoBehaviour, IAgent {
-    
-    private Mover _mover;
-    private WeaponMount _mount;
+
+    public GameObject indicator;
 
     public Weapon weapon {
         get {
             return _mount.currentWeapon;
         }
     }
-
-    public bool isShielded { get { return _shield != null; } }
-
+    public bool isShielded {
+        get {
+            return _shield != null;
+        }
+    }
     public IAgentController controller {
         get {
             return PlayerInput.instance;
         }
     }
 
+    private Mover _mover;
+    private WeaponMount _mount;
     private Shield _shield;
 
     void Awake() {
