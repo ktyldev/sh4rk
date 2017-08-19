@@ -18,6 +18,6 @@ public class Gamepad : ControlMode {
     }
 
     public override Vector3 GetMoveDirection() {
-        return new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        return new Vector3(Input.GetAxis("MoveH"), 0, Input.GetAxis("MoveV"));
     }
 }
