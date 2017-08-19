@@ -5,6 +5,15 @@ using System.Text;
 using UnityEngine;
 
 public class MouseKeyboard : ControlMode {
+
+    private Transform _target;
+    private Plane _hitPlane;
+
+    void Start() {
+        _target = Player.instance.sharkTransform;
+        _hitPlane = new Plane(Vector3.up, Vector3.zero);
+    }
+
     public override string controlMode {
         get { return "Mouse & Keyboard"; }
     }
@@ -14,12 +23,19 @@ public class MouseKeyboard : ControlMode {
     }
 
     public override Vector3 GetAimDirection() {
-        var mousePos = Input.mousePosition;
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        mousePos.x -= Screen.width / 2;
-        mousePos.y -= Screen.height / 2;
+        float distance;
+        Vector3 aimPos;
+        if (_hitPlane.Raycast(ray, out distance)) {
+            aimPos = ray.GetPoint(distance);
+        } else {
+            return Vector3.zero;
+        }
 
-        return new Vector3(-mousePos.y, 0, mousePos.x).normalized;
+        var dir = aimPos - _target.position;
+
+        return  new Vector3(-dir.z, 0, dir.x).normalized;
     }
 
     public override Vector3 GetMoveDirection() {
