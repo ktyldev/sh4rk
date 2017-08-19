@@ -51,5 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00392fb13589ca24d9713064ca090685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particles: {fileID: 1797234864083726, guid: 19691e4f5c382e245afc35a3ccd87f52, type: 2}
   duration: 5
   speedMultiplier: 1.5
