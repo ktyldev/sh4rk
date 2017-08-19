@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FXManager : MonoBehaviour {
+public class SFXManager : MonoBehaviour {
 
-    private static FXManager _instance;
+    private static SFXManager _instance;
     public static float volume { get; private set; }
 
     public float defaultVolume;

@@ -39,7 +39,7 @@ public class Weapon : MonoBehaviour {
     private IEnumerator Fire() {
         while (_controller.attack) {
             onFire.Invoke();
-            FXManager.PlaySound(pewPewNoise);
+            SFXManager.PlaySound(pewPewNoise);
 
             foreach (var spawn in projectileSpawns) {
                 Instantiate(projectile, spawn.position, spawn.rotation, null);

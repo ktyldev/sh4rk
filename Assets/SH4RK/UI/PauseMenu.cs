@@ -18,8 +18,8 @@ public class PauseMenu : MonoBehaviour {
         _music.onValueChanged.AddListener(MusicManager.SetVolume);
 
         _fx = fxVolume.GetComponent<Slider>();
-        _fx.value = FXManager.volume;
-        _fx.onValueChanged.AddListener(FXManager.SetVolume);
+        _fx.value = SFXManager.volume;
+        _fx.onValueChanged.AddListener(SFXManager.SetVolume);
 	}
 
     public void Quit() {
