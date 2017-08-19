@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4873670703115414}
-  - component: {fileID: 114885668758233924}
+  - component: {fileID: 114237243121251310}
   m_Layer: 0
   m_Name: PlayerWeapon
   m_TagString: Untagged
@@ -238,7 +238,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1515591681219838}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114885668758233924
+--- !u!114 &114237243121251310
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1034961729532858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45475440498e2af47bd5d06b07e2e69b, type: 3}
+  m_Script: {fileID: 11500000, guid: 37e583fd998a0c2438797ea398672489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pewPewNoise: {fileID: 1095422406062146, guid: d03a44feaa14cfb45b3495c120c258f3,

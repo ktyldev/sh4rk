@@ -8,14 +8,14 @@ public class ControlModeManager : MonoBehaviour {
     private Text _text;
 
     void Awake() {
-        _text = GetComponentInChildren<Text>();    
+        _text = GetComponentInChildren<Text>();
     }
 
     void OnGUI() {
-        _text.text = "Control Mode: " + InputManager.controlMode.controlMode;    
+        _text.text = "Control Mode: " + PlayerInput.instance.controlModeName;
     }
 
     public void ToggleMode() {
-        InputManager.ToggleControlMode();
+        PlayerInput.ToggleControlMode();
     }
 }

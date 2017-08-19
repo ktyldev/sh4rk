@@ -1,12 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shark : MonoBehaviour {
+public class Shark : MonoBehaviour, IAgent {
     
     private Mover _mover;
     private WeaponMount _mount;
-    
+
     public Weapon weapon {
         get {
             return _mount.currentWeapon;
@@ -14,6 +15,13 @@ public class Shark : MonoBehaviour {
     }
 
     public bool isShielded { get { return _shield != null; } }
+
+    public IAgentController controller {
+        get {
+            return PlayerInput.instance;
+        }
+    }
+
     private Shield _shield;
 
     void Awake() {
@@ -21,10 +29,6 @@ public class Shark : MonoBehaviour {
         _mount = GetComponentInChildren<WeaponMount>();
     }
     
-    void Update() {
-        Move();
-    }
-
     public void PowerupWeapon(GameObject weapon, int shots) {
         _mount.SetPowerupWeapon(weapon, shots);
     }
@@ -36,9 +40,5 @@ public class Shark : MonoBehaviour {
     public void DestroyShield() {
         Destroy(_shield.gameObject);
         _shield = null;
-    }
-
-    private void Move() {
-        _mover.SetDirection(InputManager.controlMode.GetMoveDirection());
     }
 }

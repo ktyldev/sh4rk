@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4105960324513324}
-  - component: {fileID: 114418816484055612}
+  - component: {fileID: 114717350071052986}
   m_Layer: 0
   m_Name: JellyfishWeapon
   m_TagString: Untagged
@@ -264,7 +264,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114418816484055612
+--- !u!114 &114717350071052986
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -272,13 +272,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1414787140538884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfe98cd298f1aa4ba9ee3a1d5233224, type: 3}
+  m_Script: {fileID: 11500000, guid: 37e583fd998a0c2438797ea398672489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pewPewNoise: {fileID: 1105579024457780, guid: 7e01abdeedc426c4d893a87c53a75df1,
+  pewPewNoise: {fileID: 1372524772145464, guid: f86a8b17f3ce78f4281eafcd72a06a10,
     type: 2}
   projectile: {fileID: 1890130342103006, guid: 14b9c089a0ab0804ea6a6e493892c05a, type: 2}
   projectileSpawns:
   - {fileID: 4715008122678158}
-  shotDelay: 2
-  engagementRange: 150
+  shotDelay: 2.5

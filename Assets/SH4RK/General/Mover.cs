@@ -9,8 +9,20 @@ public class Mover : MonoBehaviour {
     public bool bindToGameArea;
 
     private Vector3 _direction;
-    
-	void Update () {
+    private IAgentController _controller;
+
+    void Start() {
+        var agent = GetComponent<IAgent>();
+        if (agent != null) {
+            _controller = agent.controller;
+        }
+    }
+
+    void Update () {
+        if (_controller != null) {
+            SetDirection(_controller.moveDirection);
+        }
+
         if (_direction == null || _direction == Vector3.zero)
             return;
         
@@ -19,10 +31,9 @@ public class Mover : MonoBehaviour {
             transform.position = GameManager.BindToGameArea(transform.position);
         }
 	}
-
+    
     public void SetDirection(Vector3 direction) {
-        _direction.x = direction.x;
-        _direction.z = direction.z;
+        _direction = direction;
         
         // Lerp doesn't work if the angles are opposite to each other
         var lookDirection = Mathf.Abs(transform.forward.x + _direction.x) < 0.5 && Mathf.Abs(transform.forward.z + _direction.z) < 0.5 ?

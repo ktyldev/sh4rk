@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour {
     }
 
     void OnGUI() {
-        if (!_shake && InputManager.controlMode.Attack()) {
+        if (!_shake && PlayerInput.instance.attack) {
             _shake = true;
             StartCoroutine(Shake());
         }

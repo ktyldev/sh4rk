@@ -85,9 +85,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4497091313487060}
-  - component: {fileID: 114485321787618150}
+  - component: {fileID: 114118646422733768}
   m_Layer: 0
-  m_Name: FollowJellyfishWeapon
+  m_Name: HomingWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -264,7 +264,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114485321787618150
+--- !u!114 &114118646422733768
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1867496754526430}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfe98cd298f1aa4ba9ee3a1d5233224, type: 3}
+  m_Script: {fileID: 11500000, guid: 37e583fd998a0c2438797ea398672489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pewPewNoise: {fileID: 1105579024457780, guid: 7e01abdeedc426c4d893a87c53a75df1,
@@ -280,5 +280,4 @@ MonoBehaviour:
   projectile: {fileID: 1484652969274510, guid: 9e7d076079634f542a09feef02701391, type: 2}
   projectileSpawns:
   - {fileID: 4756879877208716}
-  shotDelay: 3
-  engagementRange: 100
+  shotDelay: 5

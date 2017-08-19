@@ -1,18 +1,27 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : MonoBehaviour, IAgent {
 
     public int level;
     public int scoreValue;
+    public int engagementDistance;
 
     private Transform _player;
     private Mover _mover;
     private ExplosionManager _explosions;
 
     public UnityEvent onDeath { get; private set; }
+
+    public IAgentController controller {
+        get {
+            return _controller;
+        }
+    }
+    private EnemyController _controller;
 
     void Awake() {
         _mover = GetComponent<Mover>();
@@ -23,13 +32,9 @@ public class Enemy : MonoBehaviour {
 
     void Start() {
         _player = Player.instance.sharkTransform;
+        _controller = new EnemyController(transform, _player, engagementDistance);
     }
-
-    void Update() {
-        var dir = _player.transform.position - transform.position;
-        _mover.SetDirection(dir.normalized);
-    }
-
+    
     void OnDestroy() {
         onDeath.Invoke();
         Player.instance.AddScore(scoreValue);

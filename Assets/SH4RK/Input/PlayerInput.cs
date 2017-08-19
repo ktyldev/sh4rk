@@ -4,11 +4,34 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour {
+public class PlayerInput : MonoBehaviour, IAgentController {
 
-    private static InputManager _instance;
-    public static ControlMode controlMode { get { return _instance.CurrentControlMode(); } }
-    
+    public static PlayerInput instance { get; private set; }
+
+    public string controlModeName {
+        get {
+            return CurrentControlMode().controlMode;
+        }
+    }
+
+    public Vector3 moveDirection {
+        get {
+            return CurrentControlMode().GetMoveDirection();
+        }
+    }
+
+    public Vector3 aimDirection {
+        get {
+            return CurrentControlMode().GetAimDirection();
+        }
+    }
+
+    public bool attack {
+        get {
+            return CurrentControlMode().Attack();
+        }
+    }
+
     public GameObject[] controlModes;
     public GameObject pauseMode;
 
@@ -17,12 +40,12 @@ public class InputManager : MonoBehaviour {
     private int _controlModeIndex;
     
     void Awake() {
-        if (_instance != null && _instance != this) {
+        if (instance != null && instance != this) {
             Destroy(gameObject);
             return;
         }
 
-        _instance = this;
+        instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
@@ -54,7 +77,7 @@ public class InputManager : MonoBehaviour {
     }
     
     public static void ToggleControlMode() {
-        _instance.IterateControlMode();
+        instance.IterateControlMode();
     }
 
     protected void IterateControlMode() {

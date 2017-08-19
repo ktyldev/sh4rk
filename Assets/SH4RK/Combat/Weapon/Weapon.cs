@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class Weapon : MonoBehaviour {
+public class Weapon : MonoBehaviour {
 
     public GameObject pewPewNoise;
     public GameObject projectile;
@@ -13,26 +13,31 @@ public abstract class Weapon : MonoBehaviour {
     public UnityEvent onFire { get; private set; }
 
     private bool _firing;
+    private IAgentController _controller;
 
     private void Awake() {
         onFire = new UnityEvent();
     }
 
+    private void Start() {
+        _controller = GetComponentInParent<IAgent>().controller;
+    }
+
     // Update is called once per frame
     void Update() {
+        if (_controller == null)
+            throw new System.Exception();
+        
         Rotate();
 
-        if (GetIsFiring() && !_firing) {
+        if (_controller.attack && !_firing) {
             _firing = true;
             StartCoroutine(Fire());
         }
     }
-
-    protected abstract bool GetIsFiring();
-    protected abstract Vector3 GetDir();
     
     private IEnumerator Fire() {
-        while (GetIsFiring()) {
+        while (_controller.attack) {
             onFire.Invoke();
             FXManager.PlaySound(pewPewNoise);
 
@@ -44,8 +49,8 @@ public abstract class Weapon : MonoBehaviour {
 
         _firing = false;
     }
-    
+
     private void Rotate() {
-        transform.LookAt(transform.position + GetDir());
+        transform.LookAt(transform.position + _controller.aimDirection);
     }
 }
