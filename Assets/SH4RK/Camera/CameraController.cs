@@ -40,9 +40,7 @@ public class CameraController : MonoBehaviour {
 
         while (elapsed < duration) {
             elapsed += Time.deltaTime;
-
-            var percentComplete = elapsed / duration;
-
+            
             var returnPos = originalPos();
 
             var x = returnPos.x + (shakeMagnitude * (UnityEngine.Random.value - 0.5f));

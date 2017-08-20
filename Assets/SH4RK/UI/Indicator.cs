@@ -12,7 +12,6 @@ public class Indicator : MonoBehaviour {
 
     private Enemy[] _tracked;
     private Transform _parent;
-    private Transform _closest;
     
     void Start() {
         _parent = transform.parent;

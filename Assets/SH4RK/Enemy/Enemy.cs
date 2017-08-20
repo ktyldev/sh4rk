@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour, IAgent {
     public int engagementDistance;
 
     private Transform _player;
-    private Mover _mover;
     private ExplosionManager _explosions;
 
     public UnityEvent onDeath { get; private set; }
@@ -24,7 +23,6 @@ public class Enemy : MonoBehaviour, IAgent {
     private EnemyController _controller;
 
     void Awake() {
-        _mover = GetComponent<Mover>();
         _explosions = GameObject.FindGameObjectWithTag("GameController").GetComponent<ExplosionManager>();
 
         onDeath = new UnityEvent();

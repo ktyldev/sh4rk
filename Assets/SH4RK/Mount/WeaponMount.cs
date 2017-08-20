@@ -18,10 +18,8 @@ public class WeaponMount : MonoBehaviour {
     private Weapon[] _mainWeapons;
     private Weapon[] _powerUpWeapons;
     private int _powerUpShotsRemaining = 0;
-    private IAgentController _weaponController;
 
     void Awake() {
-        _weaponController = GetComponentInParent<IAgent>().controller;
         _mainWeapons = InstantiateWeapons(mainWeapon);
         _weapons = _mainWeapons;
     }

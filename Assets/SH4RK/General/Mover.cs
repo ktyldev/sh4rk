@@ -23,7 +23,7 @@ public class Mover : MonoBehaviour {
             SetDirection(_controller.moveDirection);
         }
 
-        if (_direction == null || _direction == Vector3.zero)
+        if (_direction == Vector3.zero)
             return;
         
         transform.Translate(_direction * Time.deltaTime * speed, Space.World);

@@ -23,12 +23,10 @@ public class Shark : MonoBehaviour, IAgent {
         }
     }
 
-    private Mover _mover;
     private WeaponMount _mount;
     private Shield _shield;
 
     void Awake() {
-        _mover = GetComponent<Mover>();
         _mount = GetComponentInChildren<WeaponMount>();
     }
     
