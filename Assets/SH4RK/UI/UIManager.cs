@@ -4,29 +4,24 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour {
 
-    private static UIManager _instance;
-
+    public static UIManager instance { get; private set; }
+    
     public GameObject pauseMenu;
 
-    private GameObject _pauseMenu;
+    private GameObject _openMenu;
 
     void Start() {
-        if (_instance != null)
+        if (instance != null)
             throw new System.Exception();
 
-        _instance = this;
+        instance = this;
+
+        GameManager.onPause.AddListener(() => _openMenu = Instantiate(pauseMenu, transform));
+        GameManager.onUnPause.AddListener(() => Destroy(_openMenu));
     }
     
-    public static void TogglePause() {
-        _instance.TogglePauseMenu();
-    }
-
-    protected void TogglePauseMenu() {
-        if (_pauseMenu == null) {
-            _pauseMenu = Instantiate(pauseMenu, transform);
-            return;
-        }
-
-        Destroy(_pauseMenu);
+    public void OpenMenu(GameObject opener, GameObject menu) {
+        _openMenu = Instantiate(menu, opener.transform.parent);
+        Destroy(opener);
     }
 }

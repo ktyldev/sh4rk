@@ -2,28 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour {
 
-    public GameObject musicVolume;
-    public GameObject fxVolume;
-
-    private Slider _music;
-    private Slider _fx;
+    public GameObject optionsMenu;
     
-	void Awake () {
-        _music = musicVolume.GetComponent<Slider>();
-        _music.value = MusicManager.volume;
-        _music.onValueChanged.AddListener(MusicManager.SetVolume);
+    public void QuitToMainMenu() {
+        SceneManager.LoadScene("main_menu");
+    }
 
-        _fx = fxVolume.GetComponent<Slider>();
-        _fx.value = SFXManager.volume;
-        _fx.onValueChanged.AddListener(SFXManager.SetVolume);
-	}
+    public void OptionsMenu() {
+        UIManager.instance.OpenMenu(gameObject, optionsMenu);
+    }
 
-    public void Quit() {
-        print("Quit");
-        Application.Quit();
+    public void Resume() {
+        GameManager.TogglePause();
     }
 }

@@ -5,17 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
-    
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
+    public GameObject optionsMenu;
+    
     public void StartGame() {
         SceneManager.LoadScene("dev");
     }

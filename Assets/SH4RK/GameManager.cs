@@ -7,28 +7,53 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     private static GameManager _instance;
-    
+
     public int resetTimer;
     public Bounds movementBounds;
     public Bounds cameraBounds;
-    
+
     protected bool isPaused = false;
     public static bool paused { get { return _instance.isPaused; } }
+
+    public static UnityEvent onPause { get; private set; }
+    public static UnityEvent onUnPause { get; private set; }
 
     void Awake() {
         if (_instance != null)
             throw new System.Exception();
 
         _instance = this;
+
+        onPause = new UnityEvent();
+        onUnPause = new UnityEvent();
     }
 
     public static void TogglePause() {
-        _instance.isPaused = !_instance.isPaused;
-        Time.timeScale = paused ? 0 : 1;    
+        _instance.TogPause();
     }
-    
+
+    protected void TogPause() {
+        if (isPaused) {
+            onUnPause.Invoke();
+            UnpauseGame();
+        } else {
+            onPause.Invoke();
+            PauseGame();
+        }
+    }
+
+    private void PauseGame() {
+        isPaused = true;
+        Time.timeScale = 0;
+    }
+
+    private void UnpauseGame() {
+        isPaused = false;
+        Time.timeScale = 1;
+    }
+
     public static void GameOver() {
-        TogglePause();
+        _instance.PauseGame();
         Debug.Log("GameOver!");
         GameOverSplash.Show();
         _instance.Reload();
@@ -41,7 +66,7 @@ public class GameManager : MonoBehaviour {
     private IEnumerator ReloadLevel() {
         var scene = SceneManager.GetActiveScene().buildIndex;
         yield return new WaitForSecondsRealtime(resetTimer);
-        TogglePause();
+        _instance.UnpauseGame();
         SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 

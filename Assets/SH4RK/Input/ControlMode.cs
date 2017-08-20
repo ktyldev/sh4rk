@@ -9,4 +9,5 @@ public abstract class ControlMode : MonoBehaviour {
     public abstract Vector3 GetMoveDirection();
     public abstract Vector3 GetAimDirection();
     public abstract bool Attack();
+    public abstract bool Pause();
 }

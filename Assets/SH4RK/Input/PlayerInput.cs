@@ -32,11 +32,17 @@ public class PlayerInput : MonoBehaviour, IAgentController {
         }
     }
 
+    public bool pause {
+        get {
+            return CurrentControlMode().Pause();
+        }
+    }
+
     public GameObject[] controlModes;
     public GameObject pauseMode;
 
     private ControlMode[] _controlModes;
-    private Pause _pauseMode;
+    private PauseMode _pauseMode;
     private int _controlModeIndex;
     
     void Awake() {
@@ -54,7 +60,7 @@ public class PlayerInput : MonoBehaviour, IAgentController {
             .Select(InstatiateControlMode)
             .ToArray();
 
-        _pauseMode = (Pause)InstatiateControlMode(pauseMode);
+        _pauseMode = (PauseMode)InstatiateControlMode(pauseMode);
     }
 
     private ControlMode InstatiateControlMode(GameObject mode) {
@@ -66,13 +72,10 @@ public class PlayerInput : MonoBehaviour, IAgentController {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape) ||  Input.GetKeyDown(KeyCode.Joystick1Button7)) {
-            GameManager.TogglePause();
-            UIManager.TogglePause();
-        }
-
         if (GameManager.paused) {
             _pauseMode.SetPausedMode(_controlModes[_controlModeIndex]);
+        } else if (pause) {
+            GameManager.TogglePause();
         }
     }
     

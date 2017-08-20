@@ -54,4 +54,8 @@ public class MouseKeyboard : ControlMode {
 
         return move.normalized;
     }
+
+    public override bool Pause() {
+        return Input.GetKeyDown(KeyCode.Escape);
+    }
 }

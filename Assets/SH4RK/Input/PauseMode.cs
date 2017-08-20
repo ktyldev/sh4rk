@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class Pause : ControlMode {
+public class PauseMode : ControlMode {
 
     private ControlMode _pausedMode;
 
@@ -22,6 +22,10 @@ public class Pause : ControlMode {
 
     public override Vector3 GetMoveDirection() {
         return Vector3.zero;
+    }
+
+    public override bool Pause() {
+        return false;
     }
 
     public void SetPausedMode(ControlMode mode) {

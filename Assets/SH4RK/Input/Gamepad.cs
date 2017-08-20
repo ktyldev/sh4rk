@@ -20,4 +20,8 @@ public class Gamepad : ControlMode {
     public override Vector3 GetMoveDirection() {
         return new Vector3(Input.GetAxis("MoveH"), 0, Input.GetAxis("MoveV"));
     }
+
+    public override bool Pause() {
+        return Input.GetKeyDown(KeyCode.Joystick1Button7);
+    }
 }
