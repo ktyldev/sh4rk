@@ -1175,6 +1175,7 @@ MonoBehaviour:
   - {fileID: 1268101036278190, guid: b304fb5f502574242aa4ff66511a452e, type: 2}
   - {fileID: 1754460025793262, guid: 7f5e44b9a50dbf94eae964e9c48b7a33, type: 2}
   - {fileID: 1836156328482968, guid: 425aa71f2b7bba94a8bb3723bce3b9df, type: 2}
+  - {fileID: 1503330549566830, guid: 130d213313d48e242aa59e719bb47838, type: 2}
   minDistanceFromPlayer: 150
   spawnDelay: 0.5
   enemiesPerLevel: 15
@@ -1268,7 +1269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f28ec677f4cc9ef4b9b54c442f14b687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultVolume: 0.5
+  defaultVolume: 0
   intro: {fileID: 1320782896391578, guid: 2531f4c22ab504645923b31bf8ac611d, type: 2}
   loop: {fileID: 1937057597859022, guid: 0c54d99d776849a449d52247aef44e04, type: 2}
 --- !u!114 &986627984

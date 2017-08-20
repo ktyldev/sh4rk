@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour, IAgent {
 
+    public GameObject behaviour;
     public int level;
     public int scoreValue;
     public int engagementDistance;
@@ -30,7 +31,7 @@ public class Enemy : MonoBehaviour, IAgent {
 
     void Start() {
         _player = Player.instance.sharkTransform;
-        _controller = new EnemyController(transform, _player, engagementDistance);
+        _controller = Instantiate(behaviour, transform).GetComponent<EnemyController>();
     }
     
     void OnDestroy() {

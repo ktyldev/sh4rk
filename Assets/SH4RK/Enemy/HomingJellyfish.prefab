@@ -333,6 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e747347399198143870de3b84e0468a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  behaviour: {fileID: 1625621146031194, guid: 8c562eb0f22bcad4da4eb2dc71af8982, type: 2}
   level: 3
   scoreValue: 420
   engagementDistance: 100
