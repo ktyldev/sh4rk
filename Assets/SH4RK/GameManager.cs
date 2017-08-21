@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
 
     public static UnityEvent onPause { get; private set; }
     public static UnityEvent onUnPause { get; private set; }
+    public static UnityEvent gameOver { get; private set; }
 
     void Awake() {
         if (_instance != null)
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour {
 
         onPause = new UnityEvent();
         onUnPause = new UnityEvent();
+        gameOver = new UnityEvent();
 
         UnpauseGame();
     }
@@ -56,23 +58,17 @@ public class GameManager : MonoBehaviour {
     }
 
     public static void GameOver() {
-        _instance.PauseGame();
         Debug.Log("GameOver!");
-        GameOverSplash.Show();
-        _instance.Reload();
+        gameOver.Invoke();
+        _instance.PauseGame();
     }
 
-    protected void Reload() {
-        StartCoroutine(ReloadLevel());
-    }
-
-    private IEnumerator ReloadLevel() {
+    public static void Reload() {
         var scene = SceneManager.GetActiveScene().buildIndex;
-        yield return new WaitForSecondsRealtime(resetTimer);
         _instance.UnpauseGame();
         SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
-
+    
     public static Vector3 BindToGameArea(Vector3 position) {
         return _instance.movementBounds.Contains(position) ? position : _instance.movementBounds.ClosestPoint(position);
     }

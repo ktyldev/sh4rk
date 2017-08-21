@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour {
     public static UIManager instance { get; private set; }
     
     public GameObject pauseMenu;
+    public GameObject gameOverScreen;
 
     private GameObject _openMenu;
 
@@ -20,6 +21,8 @@ public class UIManager : MonoBehaviour {
         if (GameManager.exists) {
             GameManager.onPause.AddListener(() => _openMenu = Instantiate(pauseMenu, transform));
             GameManager.onUnPause.AddListener(() => Destroy(_openMenu));
+
+            GameManager.gameOver.AddListener(() => _openMenu = Instantiate(gameOverScreen, transform));
         }
     }
     
