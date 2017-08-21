@@ -20,6 +20,7 @@ public class Readout : MonoBehaviour {
 
     void OnGUI() {
         var sb = new StringBuilder();
+        sb.AppendLine("High Score: " + _player.highScore);
         sb.AppendLine("Score: " + _player.score);
         sb.AppendLine("Wave: " + _enemies.currentWave);
         sb.AppendLine("Remaining: " + _enemies.remaining);
