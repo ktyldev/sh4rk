@@ -19,9 +19,11 @@ public class EnemySpawner : Spawner {
     public int currentWave { get { return _currentWave; } }
     public int remaining { get { return _waveEnemies == null ? 0 : _waveEnemies.Where(e => e != null).Count(); } }
 
+    public UnityEvent waveStart { get; private set; }
     public UnityEvent waveComplete { get; private set; }
 
     void Awake() {
+        waveStart = new UnityEvent();
         waveComplete = new UnityEvent();
     }
 
@@ -63,6 +65,8 @@ public class EnemySpawner : Spawner {
 
     private IEnumerator SpawnWave(int waveNumber) {
         Debug.Log("Starting wave " + waveNumber);
+        waveStart.Invoke();
+
         var waveEnemies = waveNumber * enemiesPerLevel;
         _waveEnemies = new Enemy[waveEnemies];
 
