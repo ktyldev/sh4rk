@@ -6,8 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class EnemySpawner : Spawner {
-
-
+    
     public int enemiesPerLevel;
     public GameObject indicator;
     public int showIndicatorAt;
@@ -20,10 +19,10 @@ public class EnemySpawner : Spawner {
     public int currentWave { get { return _currentWave; } }
     public int remaining { get { return _waveEnemies == null ? 0 : _waveEnemies.Where(e => e != null).Count(); } }
 
-    private UnityEvent _waveComplete;
+    public UnityEvent waveComplete { get; private set; }
 
     void Awake() {
-        _waveComplete = new UnityEvent();
+        waveComplete = new UnityEvent();
     }
 
     private void Start() {
@@ -39,7 +38,7 @@ public class EnemySpawner : Spawner {
         if (!IsInvoking("SpawnWave")) {
             if (remaining == 0) {
                 Debug.Log("Cleared wave " + _currentWave);
-                _waveComplete.Invoke();
+                waveComplete.Invoke();
 
                 StartCoroutine(SpawnWave(_currentWave));
             }
@@ -59,7 +58,7 @@ public class EnemySpawner : Spawner {
             .Where(e => e != null)
             .ToArray());
 
-        _waveComplete.AddListener(() => _showIndicator = false);
+        waveComplete.AddListener(() => _showIndicator = false);
     }
 
     private IEnumerator SpawnWave(int waveNumber) {
