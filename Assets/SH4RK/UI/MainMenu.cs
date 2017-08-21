@@ -4,11 +4,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenu : MonoBehaviour {
+public class MainMenu : Menu {
 
     public GameObject optionsMenu;
     
     public void StartGame() {
         SceneManager.LoadScene("dev");
+    }
+
+    public void OptionsMenu() {
+        UIManager.instance.OpenMenu(gameObject, optionsMenu);
+    }
+
+    public void Quit() {
+        Application.Quit();
     }
 }

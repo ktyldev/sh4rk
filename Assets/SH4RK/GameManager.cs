@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour {
     public Bounds cameraBounds;
 
     protected bool isPaused = false;
-    public static bool paused { get { return _instance.isPaused; } }
+    public static bool exists { get { return _instance != null; } }
+    public static bool paused { get { return exists && _instance.isPaused; } }
 
     public static UnityEvent onPause { get; private set; }
     public static UnityEvent onUnPause { get; private set; }
@@ -26,6 +27,8 @@ public class GameManager : MonoBehaviour {
 
         onPause = new UnityEvent();
         onUnPause = new UnityEvent();
+
+        UnpauseGame();
     }
 
     public static void TogglePause() {

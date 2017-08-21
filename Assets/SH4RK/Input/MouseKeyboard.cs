@@ -33,7 +33,7 @@ public class MouseKeyboard : ControlMode {
 
         var dir = aimPos - Player.instance.sharkTransform.position;
 
-        return  new Vector3(-dir.z, 0, dir.x).normalized;
+        return new Vector3(-dir.z, 0, dir.x).normalized;
     }
 
     public override Vector3 GetMoveDirection() {

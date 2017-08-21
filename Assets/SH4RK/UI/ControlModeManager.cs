@@ -5,9 +5,15 @@ using UnityEngine.UI;
 
 public class ControlModeManager : MonoBehaviour {
 
+    private const string _key = "control_mode";
+
     private Text _text;
 
     void Awake() {
+        if (!PlayerPrefs.HasKey(_key)) {
+            PlayerPrefs.SetInt(_key, 0);
+        }
+
         _text = GetComponentInChildren<Text>();
     }
 
@@ -16,6 +22,8 @@ public class ControlModeManager : MonoBehaviour {
     }
 
     public void ToggleMode() {
+        PlayerPrefs.SetInt(_key, PlayerPrefs.GetInt(_key) == 0 ? 1 : 0);
+
         PlayerInput.ToggleControlMode();
     }
 }

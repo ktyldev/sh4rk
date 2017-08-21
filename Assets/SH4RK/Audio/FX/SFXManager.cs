@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SFXManager : MonoBehaviour {
+    
+    private const string _key = "fx_volume";
 
     private static SFXManager _instance;
-    public static float volume { get; private set; }
-
-    public float defaultVolume;
+    public static float volume { get { return PlayerPrefs.GetFloat(_key); } }
     
     void Awake() {
+        if (!PlayerPrefs.HasKey(_key)) {
+            PlayerPrefs.SetFloat(_key, 0.5f);
+        }
+
         if (_instance != null && _instance != this) {
             Destroy(gameObject);
             return;
         }
-
+        
         _instance = this;
-        volume = defaultVolume;
         DontDestroyOnLoad(gameObject);
     }
     
@@ -29,6 +32,6 @@ public class SFXManager : MonoBehaviour {
     }
 
     public static void SetVolume(float value) {
-        volume = value;
+        PlayerPrefs.SetFloat(_key, value);
     }
 }

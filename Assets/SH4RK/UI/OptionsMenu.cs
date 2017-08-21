@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OptionsMenu : MonoBehaviour {
+public class OptionsMenu : Menu {
 
     public Slider music;
     public Slider sfx;
@@ -23,9 +23,5 @@ public class OptionsMenu : MonoBehaviour {
 
     public void SetMusicVolume(float volume) {
         MusicManager.SetVolume(volume);
-    }
-
-    public void Back() {
-        UIManager.instance.OpenMenu(gameObject, backMenu);
     }
 }

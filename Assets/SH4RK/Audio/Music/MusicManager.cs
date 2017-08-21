@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour {
 
-    private static MusicManager _instance;
+    private const string _key = "music_volume";
 
-    public float defaultVolume;
+    private static MusicManager _instance;
+    
     public GameObject intro;
     public GameObject loop;
-    
+
     private AudioSource _intro;
     private AudioSource _loop;
 
-    public static float volume { get; private set; }
+    public static float volume { get { return PlayerPrefs.GetFloat(_key); } }
 
     private bool _looping;
-
+    
     void Awake() {
+        if (!PlayerPrefs.HasKey(_key)) {
+            PlayerPrefs.SetFloat(_key, 0.5f);
+        }
+
         if (_instance != null && _instance != this) {
             Destroy(gameObject);
             return;
@@ -32,7 +37,7 @@ public class MusicManager : MonoBehaviour {
     }
 
     void Start() {
-        volume = defaultVolume;
+        
 
         _intro = Instantiate(intro, transform).GetComponent<AudioSource>();
         _intro.volume = volume;
@@ -50,6 +55,6 @@ public class MusicManager : MonoBehaviour {
     }
     
     public static void SetVolume(float value) {
-        volume = value;    
+        PlayerPrefs.SetFloat(_key, value);
     }
 }

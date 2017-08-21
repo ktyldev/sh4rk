@@ -56,6 +56,7 @@ public class PlayerInput : MonoBehaviour, IAgentController {
     }
 
     private void Start() {
+        _controlModeIndex = PlayerPrefs.GetInt("control_mode");
         _controlModes = controlModes
             .Select(InstatiateControlMode)
             .ToArray();
