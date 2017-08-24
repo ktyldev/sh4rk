@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Shark : MonoBehaviour, IAgent {
-
-    public GameObject indicator;
-
+    
     public Weapon weapon {
         get {
             return _mount.currentWeapon;
@@ -17,11 +15,7 @@ public class Shark : MonoBehaviour, IAgent {
             return _shield != null;
         }
     }
-    public IAgentController controller {
-        get {
-            return PlayerInput.instance;
-        }
-    }
+    public IAgentController controller { get; set; }
 
     private WeaponMount _mount;
     private Shield _shield;

@@ -1583,6 +1583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localPlayer: {fileID: 1916194377901548, guid: 68852c9b986865c429d2bf9d550147ba,
     type: 2}
+  networkPlayers: []
 --- !u!1 &1457985042
 GameObject:
   m_ObjectHideFlags: 0

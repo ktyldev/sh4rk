@@ -9,6 +9,7 @@ public class Players : MonoBehaviour {
     public static Players instance { get; private set; }
 
     public GameObject localPlayer;
+    public GameObject[] networkPlayers;
 
     public List<Player> players { get; private set; }
     
@@ -20,10 +21,15 @@ public class Players : MonoBehaviour {
         var local = Instantiate(localPlayer, transform).GetComponent<Player>();
         local.id = 0;
         players.Add(local);
-
+        
         instance = this;
     }
-    
+
+    public void AddNetworkPlayer(Player networkPlayer) {
+        networkPlayer.id = players.Count();
+        players.Add(networkPlayer);
+    }
+
     public Player GetLocalPlayer() {
         return players.Single(p => p.id == 0);
     }

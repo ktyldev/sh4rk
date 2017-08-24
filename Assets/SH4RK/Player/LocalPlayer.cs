@@ -8,8 +8,15 @@ public class LocalPlayer : Player {
     //private const string high_score = "high_score";
     //public int highScore { get; private set; }
 
+    protected override IAgentController sharkController {
+        get {
+            return PlayerInput.instance;
+        }
+    }
+
     protected override void OnAwake() {
         base.OnAwake();
+
 
         //if (!PlayerPrefs.HasKey(high_score)) {
         //    PlayerPrefs.SetInt(high_score, 0);
