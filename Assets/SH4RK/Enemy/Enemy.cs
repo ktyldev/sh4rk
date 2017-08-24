@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour, IAgent {
     public int scoreValue;
     public int engagementDistance;
 
-    private Transform _player;
+    private Transform _trackTarget;
     private ExplosionManager _explosions;
 
     public UnityEvent onDeath { get; private set; }
@@ -30,14 +30,11 @@ public class Enemy : MonoBehaviour, IAgent {
     }
 
     void Start() {
-        _player = Player.instance.sharkTransform;
         _controller = Instantiate(behaviour, transform).GetComponent<EnemyController>();
     }
     
     void OnDestroy() {
         onDeath.Invoke();
-        Player.instance.AddScore(scoreValue);
-
         if (_explosions == null)
             return;
 

@@ -9,7 +9,7 @@ public abstract class Shot : MonoBehaviour {
     public float life;
 
     private Mover _mover;
-
+    
     void Awake() {
         _mover = GetComponent<Mover>();
         Destroy(gameObject, life);    

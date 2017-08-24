@@ -14,7 +14,7 @@ public abstract class Spawner : MonoBehaviour {
     protected abstract bool CanSpawn(GameObject template);
 
     protected virtual GameObject Spawn() {
-        var playerTransform = GetComponent<Player>().sharkTransform;
+        var playerTransform = Players.instance.GetLocalShark().transform;
         var angle = UnityEngine.Random.rotation.eulerAngles.y;
         var dir = new Vector3(Mathf.Sin(Mathf.Deg2Rad * angle), 0, Mathf.Cos(Mathf.Deg2Rad * angle));
         var offset = dir * minDistanceFromPlayer;

@@ -55,7 +55,7 @@ public class EnemySpawner : Spawner {
     private void InstantiateIndicator() {
         var total = _waveEnemies.Length;
 
-        _indicator = Instantiate(indicator, Player.instance.sharkTransform).GetComponent<Indicator>();
+        _indicator = Instantiate(indicator, Players.instance.GetLocalShark().transform).GetComponent<Indicator>();
         _indicator.FollowEnemies(_waveEnemies
             .Where(e => e != null)
             .ToArray());

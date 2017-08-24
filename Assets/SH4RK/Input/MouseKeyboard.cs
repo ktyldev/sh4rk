@@ -31,8 +31,11 @@ public class MouseKeyboard : MonoBehaviour, IControlMode {
             return Vector3.zero;
         }
 
-        var dir = aimPos - Player.instance.sharkTransform.position;
-
+        var localShark = Players.instance.GetLocalShark();
+        var dir = localShark != null ?
+            aimPos - localShark.transform.position :
+            Vector3.zero;
+        
         return new Vector3(-dir.z, 0, dir.x).normalized;
     }
 

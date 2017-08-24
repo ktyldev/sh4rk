@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour, IAgentController {
     public int engagementDistance;
 
     void Start() {
-        _targetTransform = Player.instance.sharkTransform;
+        _targetTransform = Players.instance.GetClosestShark(transform.position).transform;
     }
 
     public Vector3 moveDirection {

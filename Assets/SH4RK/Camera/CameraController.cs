@@ -36,7 +36,7 @@ public class CameraController : MonoBehaviour {
 
         var elapsed = 0f;
 
-        var duration = Player.instance.currentShark.weapon.shotDelay;
+        var duration = Players.instance.GetLocalShark().weapon.shotDelay;
 
         while (elapsed < duration) {
             elapsed += Time.deltaTime;

@@ -9,7 +9,7 @@ public class FollowShot : EnemyShot {
     private Transform _target;
 
     private void Start() {
-        _target = Player.instance.sharkTransform;
+        _target = Players.instance.GetClosestShark(transform.position).transform;
     }
 
     protected override Vector3 GetMoveDir() {

@@ -22,9 +22,11 @@ public class Indicator : MonoBehaviour {
         if (_tracked == null)
             return;
 
+        var anchor = Players.instance.GetLocalShark().transform.position;
+
         var closest = _tracked
             .Where(e => e != null)
-            .OrderBy(e => Vector3.Distance(Player.instance.sharkTransform.position, e.transform.position))
+            .OrderBy(e => Vector3.Distance(anchor, e.transform.position))
             .FirstOrDefault();
 
         if (closest == null) {
