@@ -382,7 +382,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'pre-alpha v0.0.9
+  m_Text: 'pre-alpha v0.0.10
 
 '
 --- !u!222 &310099490
@@ -1747,8 +1747,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -38.4}
-  m_SizeDelta: {x: 100, y: 60.9}
+  m_AnchoredPosition: {x: 88.13, y: -74.16}
+  m_SizeDelta: {x: 156.26, y: 132.41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1856781669
 MonoBehaviour:
@@ -1794,7 +1794,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '[Score]
+  m_Text: '[HighScore]
+
+    [Score]
 
     [Wave]
 

@@ -4,31 +4,31 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class PauseMode : ControlMode {
+public class PauseMode : MonoBehaviour, IControlMode {
 
-    private ControlMode _pausedMode;
+    private IControlMode _pausedMode;
 
-    public override string controlMode {
+    public string controlMode {
         get { return _pausedMode.controlMode; }
     }
 
-    public override bool Attack() {
+    public bool Attack() {
         return false;
     }
 
-    public override Vector3 GetAimDirection() {
+    public Vector3 GetAimDirection() {
         return Vector3.zero;
     }
 
-    public override Vector3 GetMoveDirection() {
+    public Vector3 GetMoveDirection() {
         return Vector3.zero;
     }
 
-    public override bool Pause() {
+    public bool Pause() {
         return false;
     }
 
-    public void SetPausedMode(ControlMode mode) {
+    public void SetPausedMode(IControlMode mode) {
         _pausedMode = mode;
     }
 }

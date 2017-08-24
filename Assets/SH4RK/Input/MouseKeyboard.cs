@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class MouseKeyboard : ControlMode {
+public class MouseKeyboard : MonoBehaviour, IControlMode {
     
     private Plane _hitPlane;
 
@@ -12,15 +12,15 @@ public class MouseKeyboard : ControlMode {
         _hitPlane = new Plane(Vector3.up, Vector3.zero);
     }
     
-    public override string controlMode {
+    public string controlMode {
         get { return "Mouse & Keyboard"; }
     }
 
-    public override bool Attack() {
+    public bool Attack() {
         return Input.GetMouseButton(0);
     }
 
-    public override Vector3 GetAimDirection() {
+    public Vector3 GetAimDirection() {
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         float distance;
@@ -36,7 +36,7 @@ public class MouseKeyboard : ControlMode {
         return new Vector3(-dir.z, 0, dir.x).normalized;
     }
 
-    public override Vector3 GetMoveDirection() {
+    public Vector3 GetMoveDirection() {
         var move = Vector3.zero;
 
         if (Input.GetKey(KeyCode.A)) {
@@ -55,7 +55,7 @@ public class MouseKeyboard : ControlMode {
         return move.normalized;
     }
 
-    public override bool Pause() {
+    public bool Pause() {
         return Input.GetKeyDown(KeyCode.Escape);
     }
 }

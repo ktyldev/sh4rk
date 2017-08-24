@@ -41,7 +41,7 @@ public class PlayerInput : MonoBehaviour, IAgentController {
     public GameObject[] controlModes;
     public GameObject pauseMode;
 
-    private ControlMode[] _controlModes;
+    private IControlMode[] _controlModes;
     private PauseMode _pauseMode;
     private int _controlModeIndex;
     
@@ -64,11 +64,11 @@ public class PlayerInput : MonoBehaviour, IAgentController {
         _pauseMode = (PauseMode)InstatiateControlMode(pauseMode);
     }
 
-    private ControlMode InstatiateControlMode(GameObject mode) {
-        return Instantiate(mode, transform).GetComponent<ControlMode>();
+    private IControlMode InstatiateControlMode(GameObject mode) {
+        return Instantiate(mode, transform).GetComponent<IControlMode>();
     }
 
-    protected ControlMode CurrentControlMode() {
+    protected IControlMode CurrentControlMode() {
         return GameManager.paused ? _pauseMode : _controlModes[_controlModeIndex];
     }
 
@@ -91,7 +91,7 @@ public class PlayerInput : MonoBehaviour, IAgentController {
             oldIindex + 1;
 
         var oldMode = _controlModes[oldIindex];
-        Destroy(oldMode);
+        Destroy((MonoBehaviour)oldMode);
 
         _controlModes[oldIindex] = InstatiateControlMode(controlModes[oldIindex]);
         _controlModeIndex = newIndex;
