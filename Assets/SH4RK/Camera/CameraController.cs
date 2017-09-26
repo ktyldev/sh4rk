@@ -6,7 +6,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
 
     public Transform trackedObject { get; set; }
-    public float shakeMagnitude;
+    
+    public float maxShakeMagnitude;
     public GameObject focus;
     public float lerp;
 
@@ -15,6 +16,10 @@ public class CameraController : MonoBehaviour {
     private float _shakeTimeLeft;
 
     void Awake() {
+        if (!PlayerPrefs.HasKey("camera_shake")) {
+            PlayerPrefs.SetFloat("camera_shake", 0.5f);
+        }
+
         _offset = transform.position;
     }
 
@@ -34,7 +39,11 @@ public class CameraController : MonoBehaviour {
             StartCoroutine(Shake());
         }
     }
-    
+
+    public void SetShakeAmount(float amount) {
+        PlayerPrefs.SetFloat("camera_shake", amount);
+    }
+
     public void ShakeForSeconds(float seconds) {
         _shakeTimeLeft = seconds;
     }
@@ -51,8 +60,10 @@ public class CameraController : MonoBehaviour {
             
             var returnPos = originalPos();
 
-            var x = returnPos.x + (shakeMagnitude * (UnityEngine.Random.value - 0.5f));
-            var z = returnPos.z + (shakeMagnitude * (UnityEngine.Random.value - 0.5f));
+            var shakeValue = PlayerPrefs.GetFloat("camera_shake") * maxShakeMagnitude;
+
+            var x = returnPos.x + (shakeValue * (UnityEngine.Random.value - 0.5f));
+            var z = returnPos.z + (shakeValue * (UnityEngine.Random.value - 0.5f));
 
             transform.position = new Vector3(x, returnPos.y, z);
 

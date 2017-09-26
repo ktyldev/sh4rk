@@ -905,7 +905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecd6cc03739f6f74faea694be42f9eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeMagnitude: 3.5
+  maxShakeMagnitude: 5
   focus: {fileID: 417008836}
   lerp: 0.5
 --- !u!114 &504954779
