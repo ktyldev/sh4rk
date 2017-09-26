@@ -12,6 +12,7 @@ public class CameraController : MonoBehaviour {
 
     private bool _shake = false;
     private Vector3 _offset;
+    private float _shakeTimeLeft;
 
     void Awake() {
         _offset = transform.position;
@@ -22,13 +23,20 @@ public class CameraController : MonoBehaviour {
             return;
 
         focus.transform.position = Vector3.Lerp(focus.transform.position, GameManager.BindToCameraGameArea(trackedObject.transform.position), lerp);
+
+        if (_shakeTimeLeft > 0) {
+            _shakeTimeLeft -= Time.deltaTime;
+        }
     }
 
     void OnGUI() {
-        if (!_shake && PlayerInput.instance.attack) {
-            _shake = true;
+        if (_shakeTimeLeft > 0) {
             StartCoroutine(Shake());
         }
+    }
+    
+    public void ShakeForSeconds(float seconds) {
+        _shakeTimeLeft = seconds;
     }
 
     private IEnumerator Shake() {
@@ -52,6 +60,5 @@ public class CameraController : MonoBehaviour {
         }
 
         transform.position = originalPos();
-        _shake = false;
     }
 }
