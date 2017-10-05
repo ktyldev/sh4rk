@@ -9,4 +9,4 @@ https://monodokimes.itch.io/sh4rk
 * Music: https://soundcloud.com/wubproductions/cats-tune
 * Pew pew noises: https://soundcloud.com/5nakpak
 * Moral support/feedback: https://discord.gg/FQ3ftYx
-* Main menu background: Discord user MinDev#7623
+* Menus: [Ervin K](http://minin.tk/)
