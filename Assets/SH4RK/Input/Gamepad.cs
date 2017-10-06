@@ -13,6 +13,10 @@ public class Gamepad : MonoBehaviour, IControlMode {
         return Input.GetAxis("Attack") == 1;
     }
 
+    public bool Continue() {
+        return Input.GetKeyDown(KeyCode.Joystick1Button0);
+    }
+
     public Vector3 GetAimDirection() {
         return new Vector3(Input.GetAxis("RightV"), 0, Input.GetAxis("RightH"));
     }

@@ -58,4 +58,8 @@ public class MouseKeyboard : MonoBehaviour, IControlMode {
     public bool Pause() {
         return Input.GetKeyDown(KeyCode.Escape);
     }
+
+    public bool Continue() {
+        return Input.GetKeyDown(KeyCode.Space);
+    }
 }

@@ -44,7 +44,7 @@ public class PlayerInput : MonoBehaviour, IAgentController {
     private IControlMode[] _controlModes;
     private PauseMode _pauseMode;
     private int _controlModeIndex;
-    
+
     void Awake() {
         if (instance != null && instance != this) {
             Destroy(gameObject);
@@ -78,16 +78,20 @@ public class PlayerInput : MonoBehaviour, IAgentController {
         } else if (pause) {
             GameManager.TogglePause();
         }
+
+        if (GameManager.gameIsOver && CurrentControlMode().Continue()) {
+            GameManager.Reload();
+        }
     }
-    
+
     public static void ToggleControlMode() {
         instance.IterateControlMode();
     }
 
     protected void IterateControlMode() {
         var oldIindex = _controlModeIndex;
-        var newIndex = oldIindex == _controlModes.Length - 1 ? 
-            0 : 
+        var newIndex = oldIindex == _controlModes.Length - 1 ?
+            0 :
             oldIindex + 1;
 
         var oldMode = _controlModes[oldIindex];

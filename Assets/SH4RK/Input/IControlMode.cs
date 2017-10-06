@@ -6,4 +6,5 @@ public interface IControlMode {
     Vector3 GetAimDirection();
     bool Attack();
     bool Pause();
+    bool Continue();
 }

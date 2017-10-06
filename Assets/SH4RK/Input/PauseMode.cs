@@ -16,6 +16,10 @@ public class PauseMode : MonoBehaviour, IControlMode {
         return false;
     }
 
+    public bool Continue() {
+        return _pausedMode.Continue();
+    }
+
     public Vector3 GetAimDirection() {
         return Vector3.zero;
     }

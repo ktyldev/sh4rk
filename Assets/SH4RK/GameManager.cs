@@ -13,8 +13,10 @@ public class GameManager : MonoBehaviour {
     public Bounds cameraBounds;
 
     protected bool isPaused = false;
+    protected bool isGameOver = false;
     public static bool exists { get { return _instance != null; } }
     public static bool paused { get { return exists && _instance.isPaused; } }
+    public static bool gameIsOver { get { return _instance.isGameOver; } }
 
     public static UnityEvent onPause { get; private set; }
     public static UnityEvent onUnPause { get; private set; }
@@ -60,12 +62,14 @@ public class GameManager : MonoBehaviour {
     public static void GameOver() {
         Debug.Log("GameOver!");
         gameOver.Invoke();
+        _instance.isGameOver = true;
         _instance.PauseGame();
     }
 
     public static void Reload() {
         var scene = SceneManager.GetActiveScene().buildIndex;
         _instance.UnpauseGame();
+        _instance.isGameOver = false;
         SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
     
