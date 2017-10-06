@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
 
-    public static UIManager instance { get; private set; }
+    public static UIManager Instance { get; private set; }
     
     public GameObject pauseMenu;
     public GameObject gameOverScreen;
@@ -13,10 +13,10 @@ public class UIManager : MonoBehaviour {
     private GameObject _openMenu;
 
     void Start() {
-        if (instance != null)
+        if (Instance != null)
             throw new System.Exception();
 
-        instance = this;
+        Instance = this;
         
         if (GameManager.exists) {
             GameManager.onPause.AddListener(() => _openMenu = Instantiate(pauseMenu, transform));

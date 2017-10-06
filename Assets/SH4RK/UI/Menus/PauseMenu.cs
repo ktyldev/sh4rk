@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour {
     }
 
     public void OptionsMenu() {
-        UIManager.instance.OpenMenu(gameObject, optionsMenu);
+        UIManager.Instance.OpenMenu(gameObject, optionsMenu);
     }
 
     public void Resume() {
