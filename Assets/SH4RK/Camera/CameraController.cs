@@ -6,12 +6,11 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
 
     public Transform trackedObject { get; set; }
-    
+
     public float maxShakeMagnitude;
     public GameObject focus;
     public float lerp;
 
-    private bool _shake = false;
     private Vector3 _offset;
     private float _shakeTimeLeft;
 
@@ -40,10 +39,6 @@ public class CameraController : MonoBehaviour {
         }
     }
 
-    public void SetShakeAmount(float amount) {
-        PlayerPrefs.SetFloat("camera_shake", amount);
-    }
-
     public void ShakeForSeconds(float seconds) {
         _shakeTimeLeft = seconds;
     }
@@ -57,7 +52,7 @@ public class CameraController : MonoBehaviour {
 
         while (elapsed < duration) {
             elapsed += Time.deltaTime;
-            
+
             var returnPos = originalPos();
 
             var shakeValue = PlayerPrefs.GetFloat("camera_shake") * maxShakeMagnitude;
