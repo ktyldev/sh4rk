@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,21 +9,20 @@ public class Readout : MonoBehaviour {
 
     private Player _player;
     private EnemySpawner _enemies;
-    private Text _text;
+    public Text _highScore;
+    public Text _score;
+    public Text _wave;
+    public Text _enemiesRemaining;
 
     void Start() {
         _player = Player.instance;
-        _text = GetComponent<Text>();
         _enemies = gameController.GetComponent<EnemySpawner>();
     }
 
     void OnGUI() {
-        var sb = new StringBuilder();
-        sb.AppendLine("High Score: " + _player.highScore);
-        sb.AppendLine("Score: " + _player.score);
-        sb.AppendLine("Wave: " + _enemies.currentWave);
-        sb.AppendLine("Remaining: " + _enemies.remaining);
-
-        _text.text = sb.ToString();
+        _highScore.text = _player.highScore.ToString();
+        _score.text = _player.score.ToString();
+        _wave.text = "\nWave " + _enemies.currentWave.ToString();
+        _enemiesRemaining.text = _enemies.remaining.ToString();
     }
 }

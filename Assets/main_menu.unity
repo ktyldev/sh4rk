@@ -129,15 +129,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4880816200228320, guid: 857aa98343f0c7949a79c5485cbf0419, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4880816200228320, guid: 857aa98343f0c7949a79c5485cbf0419, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4880816200228320, guid: 857aa98343f0c7949a79c5485cbf0419, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4880816200228320, guid: 857aa98343f0c7949a79c5485cbf0419, type: 2}
       propertyPath: m_LocalRotation.w
@@ -311,7 +311,7 @@ RectTransform:
   m_GameObject: {fileID: 679592778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3130181, y: 1.313018, z: 1.313018}
+  m_LocalScale: {x: 1.5825475, y: 1.5825481, z: 1.5825481}
   m_Children:
   - {fileID: 2044712735}
   - {fileID: 808484601}
@@ -319,10 +319,10 @@ RectTransform:
   m_Father: {fileID: 919770541}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 194, y: -87}
-  m_SizeDelta: {x: -305.3, y: -220.6}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -153, y: 126}
+  m_SizeDelta: {x: -145.29999, y: -130.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &679592781
 CanvasRenderer:
@@ -713,7 +713,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
