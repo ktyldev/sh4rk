@@ -12,7 +12,8 @@ public class OptionsMenu : Menu {
 
     private const string CAMERA_SHAKE_KEY = "camera_shake";
 
-    void Awake () {
+    void Awake ()
+    {
         if (PlayerPrefs.HasKey(CAMERA_SHAKE_KEY)) {
             cameraShake.value = PlayerPrefs.GetFloat(CAMERA_SHAKE_KEY);
         }
@@ -32,7 +33,8 @@ public class OptionsMenu : Menu {
         MusicManager.SetVolume(volume);
     }
 
-    private void SetCameraShake(float value) {
+    private void SetCameraShake(float value)
+    {
         Camera.main.GetComponent<CameraController>().SetShakeAmount(value);
     }
 }

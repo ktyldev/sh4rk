@@ -5,20 +5,26 @@ using UnityEngine.UI;
 
 public class ControlModeManager : MonoBehaviour {
 
+    public Sprite console;
+    public Sprite keyboard;
+
     private const string _key = "control_mode";
 
-    private Text _text;
+    private Image _image;
 
     void Awake() {
         if (!PlayerPrefs.HasKey(_key)) {
             PlayerPrefs.SetInt(_key, 0);
         }
 
-        _text = GetComponentInChildren<Text>();
+        _image = GetComponentInChildren<Image>();
     }
 
     void OnGUI() {
-        _text.text = "Control Mode: " + PlayerInput.instance.controlModeName;
+        if (PlayerInput.instance.controlModeName == "Gamepad")
+            _image.sprite = console;
+        else
+            _image.sprite = keyboard;
     }
 
     public void ToggleMode() {
