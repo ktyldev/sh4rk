@@ -41,7 +41,7 @@ public class Indicator : MonoBehaviour {
     public void FollowEnemies(Enemy[] enemies) {
         _tracked = enemies;
         foreach (var e in _tracked) {
-            e.onDeath.AddListener(() => _tracked[Array.IndexOf(_tracked, e)] = null);
+            e.OnDeath.AddListener(() => _tracked[Array.IndexOf(_tracked, e)] = null);
         }
     }
 }

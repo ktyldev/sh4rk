@@ -82,7 +82,7 @@ public class EnemySpawner : Spawner {
 
     private void Spawn(int index) {
         var enemy = base.Spawn().GetComponent<Enemy>();
-        enemy.onDeath.AddListener(() => _waveEnemies[index] = null);
+        enemy.OnDeath.AddListener(() => _waveEnemies[index] = null);
         _waveEnemies[index] = enemy;
     }
 

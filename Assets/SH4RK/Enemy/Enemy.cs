@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour, IAgent {
     private ExplosionManager _explosions;
     private Health _health;
 
-    public UnityEvent onDeath { get; private set; }
+    public UnityEvent OnDeath { get { return _health.OnEmpty; } }
 
     public IAgentController controller {
         get {
@@ -26,9 +26,7 @@ public class Enemy : MonoBehaviour, IAgent {
 
     void Awake() {
         _health = GetComponent<Health>();
-        _explosions = GameObject.FindGameObjectWithTag("GameController").GetComponent<ExplosionManager>();
-        onDeath = new UnityEvent();
-
+        _explosions = GameObject.FindGameObjectWithTag(GameTags.GameController).GetComponent<ExplosionManager>();
     }
 
     void Start() {
@@ -39,7 +37,7 @@ public class Enemy : MonoBehaviour, IAgent {
     }
 
     private void Die() {
-        onDeath.Invoke();
+        // onDeath.Invoke();
         Player.instance.AddScore(scoreValue);
 
         if (_explosions == null)
