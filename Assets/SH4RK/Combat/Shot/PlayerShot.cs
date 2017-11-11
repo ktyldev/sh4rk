@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class PlayerShot : Shot {
     protected override void OnHit(GameObject hitObject) {
-        Destroy(hitObject);
+        var health = hitObject.GetComponent<Health>();
+        if (health == null)
+            throw new Exception();
+
+        health.TakeDamage(1);
     }
 
     protected override bool ValidateHit(GameObject obj) {
-        return obj.GetComponent<Enemy>() != null;
+        return obj.GetComponent<Enemy>() != null && obj.GetComponent<Health>() != null;
     }
 }

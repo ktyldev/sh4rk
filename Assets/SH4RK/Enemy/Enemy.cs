@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour, IAgent {
 
     private Transform _player;
     private ExplosionManager _explosions;
+    private Health _health;
 
     public UnityEvent onDeath { get; private set; }
 
@@ -24,17 +25,20 @@ public class Enemy : MonoBehaviour, IAgent {
     private EnemyController _controller;
 
     void Awake() {
+        _health = GetComponent<Health>();
         _explosions = GameObject.FindGameObjectWithTag("GameController").GetComponent<ExplosionManager>();
-
         onDeath = new UnityEvent();
+
     }
 
     void Start() {
         _player = Player.instance.sharkTransform;
         _controller = Instantiate(behaviour, transform).GetComponent<EnemyController>();
+
+        _health.OnEmpty.AddListener(Die);
     }
-    
-    void OnDestroy() {
+
+    private void Die() {
         onDeath.Invoke();
         Player.instance.AddScore(scoreValue);
 
@@ -42,6 +46,7 @@ public class Enemy : MonoBehaviour, IAgent {
             return;
 
         _explosions.MakeExplosion(transform.position);
+        Destroy(gameObject);
     }
 
     void OnCollisionEnter(Collision collision) {
