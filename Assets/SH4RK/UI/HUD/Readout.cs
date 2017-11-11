@@ -17,12 +17,14 @@ public class Readout : MonoBehaviour {
     void Start() {
         _player = Player.instance;
         _enemies = gameController.GetComponent<EnemySpawner>();
+
+        _wave.text = "Wave 1";
+        _enemies.waveStart.AddListener(() => _wave.text = string.Format("Wave {0}", _enemies.currentWave));
     }
 
     void OnGUI() {
         _highScore.text = _player.highScore.ToString();
         _score.text = _player.score.ToString();
-        _wave.text = "\nWave " + _enemies.currentWave.ToString();
         _enemiesRemaining.text = _enemies.remaining.ToString();
     }
 }
