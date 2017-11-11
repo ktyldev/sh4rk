@@ -28,7 +28,6 @@ public class Health : MonoBehaviour {
         if (_current <= 0) {
             OnEmpty.Invoke();
         }
-        print(_current);
     }
 }
 
