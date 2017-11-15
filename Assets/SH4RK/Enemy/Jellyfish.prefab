@@ -99,7 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4597581015722646}
   - component: {fileID: 114602162398185232}
-  - component: {fileID: 114083689566267874}
+  - component: {fileID: 114398710556161104}
   - component: {fileID: 65210754687385188}
   - component: {fileID: 54202274013038676}
   - component: {fileID: 114755471338415218}
@@ -330,20 +330,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114083689566267874
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1754460025793262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72bdec4502a100f41b3886187d2f6527, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  rotationLerp: 0
-  bindToGameArea: 1
 --- !u!114 &114223343475637430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -382,6 +368,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114398710556161104
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1754460025793262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf6e4ae82a2f834496f7e7f742e00d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  rotationLerp: 0
+  bindToGameArea: 1
 --- !u!114 &114602162398185232
 MonoBehaviour:
   m_ObjectHideFlags: 1

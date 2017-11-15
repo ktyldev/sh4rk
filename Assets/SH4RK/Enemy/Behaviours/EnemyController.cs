@@ -14,6 +14,12 @@ public class EnemyController : MonoBehaviour, IAgentController {
         _targetTransform = Player.instance.sharkTransform;
     }
 
+    void Update() {
+        if (_targetTransform == null) {
+            print("no target");
+        }
+    }
+
     public Vector3 moveDirection {
         get {
             return _targetTransform == null ? Vector3.zero : (_targetTransform.position - transform.position).normalized;

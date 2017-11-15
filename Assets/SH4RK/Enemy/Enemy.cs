@@ -10,8 +10,7 @@ public class Enemy : MonoBehaviour, IAgent {
     public int level;
     public int scoreValue;
     public int engagementDistance;
-
-    private Transform _player;
+    
     private ExplosionManager _explosions;
     private Health _health;
 
@@ -30,7 +29,6 @@ public class Enemy : MonoBehaviour, IAgent {
     }
 
     void Start() {
-        _player = Player.instance.sharkTransform;
         _controller = Instantiate(behaviour, transform).GetComponent<EnemyController>();
 
         _health.OnEmpty.AddListener(Die);

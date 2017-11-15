@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour {
 
     public GameObject optionsMenu;
-    
+
     public void QuitToMainMenu() {
         SceneManager.LoadScene("main_menu");
     }
@@ -19,5 +19,11 @@ public class PauseMenu : MonoBehaviour {
 
     public void Resume() {
         GameManager.TogglePause();
+    }
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Resume();
+        }
     }
 }
