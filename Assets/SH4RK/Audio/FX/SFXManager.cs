@@ -8,7 +8,7 @@ public class SFXManager : AudioManager {
     {
         get
         {
-            return "fx_volume";
+            return GameTags.SfxVolume;
         }
     }
 

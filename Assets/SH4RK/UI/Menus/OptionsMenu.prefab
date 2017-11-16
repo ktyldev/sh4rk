@@ -498,8 +498,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90affbf71ed53134d8d0639bd5100253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music: {fileID: 114440336611019816}
-  sfx: {fileID: 114812807592679092}
+  musicSlider: {fileID: 114440336611019816}
+  sfxSlider: {fileID: 114812807592679092}
   cameraShake: {fileID: 114138291840300702}
   backMenu: {fileID: 1802386017994632, guid: 33ce7771fe595bb4c9cf3cbb91798eaa, type: 2}
 --- !u!114 &114215048000974624

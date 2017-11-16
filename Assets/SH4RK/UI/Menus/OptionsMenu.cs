@@ -5,41 +5,30 @@ using UnityEngine.UI;
 
 public class OptionsMenu : Menu {
 
-    public Slider music;
+    public Slider musicSlider;
     public Slider sfxSlider;
     public Slider cameraShake;
     public GameObject backMenu;
 
-    private const string CAMERA_SHAKE_KEY = "camera_shake";
-
     private SFXManager _sfx;
+    private MusicManager _music;
 
     void Awake() {
-        if (PlayerPrefs.HasKey(CAMERA_SHAKE_KEY)) {
-            cameraShake.value = PlayerPrefs.GetFloat(CAMERA_SHAKE_KEY);
+        if (PlayerPrefs.HasKey(GameTags.CameraShake)) {
+            cameraShake.value = PlayerPrefs.GetFloat(GameTags.CameraShake);
         }
     }
 
     void Start() {
-        _sfx = GameObject.FindGameObjectWithTag(GameTags.Audio).GetComponent<SFXManager>();
+        var audio = GameObject.FindGameObjectWithTag(GameTags.Audio);
+        _sfx = audio.GetComponent<SFXManager>();
+        _music = audio.GetComponent<MusicManager>();
 
-        music.value = MusicManager.volume;
+        musicSlider.value = _music.Volume;
         sfxSlider.value = _sfx.Volume;
 
-        cameraShake.onValueChanged.AddListener(SetCameraShake);
-        music.onValueChanged.AddListener(SetMusicVolume);
-        sfxSlider.onValueChanged.AddListener(SetSfxVolume);
-    }
-
-    public void SetSfxVolume(float volume) {
-        _sfx.Volume = volume;
-    }
-
-    public void SetMusicVolume(float volume) {
-        MusicManager.SetVolume(volume);
-    }
-
-    private void SetCameraShake(float value) {
-        PlayerPrefs.SetFloat("camera_shake", value);
+        cameraShake.onValueChanged.AddListener(v => PlayerPrefs.SetFloat(GameTags.CameraShake, v));
+        musicSlider.onValueChanged.AddListener(v => _music.Volume = v);
+        sfxSlider.onValueChanged.AddListener(v => _sfx.Volume = v);
     }
 }
