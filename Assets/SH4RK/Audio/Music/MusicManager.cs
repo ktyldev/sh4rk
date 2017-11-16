@@ -22,14 +22,8 @@ public class MusicManager : MonoBehaviour {
         if (!PlayerPrefs.HasKey(_key)) {
             PlayerPrefs.SetFloat(_key, 0.5f);
         }
-
-        if (_instance != null && _instance != this) {
-            Destroy(gameObject);
-            return;
-        }
         
         _instance = this;
-        DontDestroyOnLoad(gameObject);
     }
     
     void OnGUI() {

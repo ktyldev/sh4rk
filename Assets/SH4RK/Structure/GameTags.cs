@@ -4,4 +4,5 @@ using UnityEngine;
 
 public class GameTags {
     public const string GameController = "GameController";
+    public const string Audio = "Audio";
 }

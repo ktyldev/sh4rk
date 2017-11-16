@@ -14,6 +14,7 @@ public class Weapon : MonoBehaviour {
 
     private bool _firing;
     private IAgentController _controller;
+    private SFXManager _sfx;
 
     private void Awake() {
         onFire = new UnityEvent();
@@ -21,6 +22,7 @@ public class Weapon : MonoBehaviour {
 
     private void Start() {
         _controller = GetComponentInParent<IAgent>().controller;
+        _sfx = GameObject.FindGameObjectWithTag(GameTags.Audio).GetComponent<SFXManager>();
     }
 
     // Update is called once per frame
@@ -39,7 +41,7 @@ public class Weapon : MonoBehaviour {
     private IEnumerator Fire() {
         while (_controller.attack) {
             onFire.Invoke();
-            SFXManager.PlaySound(pewPewNoise);
+            _sfx.PlaySound(pewPewNoise);
 
             foreach (var spawn in projectileSpawns) {
                 Instantiate(projectile, spawn.position, spawn.rotation, null);

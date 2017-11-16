@@ -10,17 +10,19 @@ public class Explosion : MonoBehaviour {
     public GameObject splodeSound;
     
     private GameObject[] _frames;
+    private SFXManager _sfx;
 
     void Awake() {
         _frames = new GameObject[frames.Length];    
     }
 
     void Start() {
+        _sfx = GameObject.FindGameObjectWithTag(GameTags.Audio).GetComponent<SFXManager>();
         StartCoroutine(Explode());
     }
 
     private IEnumerator Explode() {
-        SFXManager.PlaySound(splodeSound);
+        _sfx.PlaySound(splodeSound);
 
         for (int i = 0; i < frames.Length; i++) {
             _frames[i] = Instantiate(frames[i], transform);
