@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Shark : MonoBehaviour, IAgent {
-
-    public GameObject indicator;
-
+    
     public Weapon weapon {
         get {
             return _mount.currentWeapon;

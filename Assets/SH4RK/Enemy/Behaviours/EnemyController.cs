@@ -11,7 +11,10 @@ public class EnemyController : MonoBehaviour, IAgentController {
     public int engagementDistance;
 
     void Start() {
-        _targetTransform = Player.instance.sharkTransform;
+        _targetTransform = GameObject.FindGameObjectWithTag(GameTags.Player)
+            .GetComponent<Player>()
+            .Shark
+            .transform;
     }
 
     void Update() {

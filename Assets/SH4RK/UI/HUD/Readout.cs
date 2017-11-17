@@ -15,7 +15,7 @@ public class Readout : MonoBehaviour {
     public Text _enemiesRemaining;
 
     void Start() {
-        _player = Player.instance;
+        _player = GameObject.FindGameObjectWithTag(GameTags.Player).GetComponent<Player>();
         _enemies = gameController.GetComponent<EnemySpawner>();
 
         _wave.text = "Wave 1";

@@ -7,6 +7,16 @@ using UnityEngine;
 public class MouseKeyboard : MonoBehaviour, IControlMode {
     
     private Plane _hitPlane;
+    private Player _player;
+    private Player _Player {
+        get {
+            if (_player == null) {
+                _player = GameObject.FindGameObjectWithTag(GameTags.Player).GetComponent<Player>();
+            }
+
+            return _player;
+        }
+    }
 
     void Start() {
         _hitPlane = new Plane(Vector3.up, Vector3.zero);
@@ -31,7 +41,7 @@ public class MouseKeyboard : MonoBehaviour, IControlMode {
             return Vector3.zero;
         }
 
-        var dir = aimPos - Player.instance.sharkTransform.position;
+        var dir = aimPos - _Player.Shark.transform.position;
 
         return new Vector3(-dir.z, 0, dir.x).normalized;
     }

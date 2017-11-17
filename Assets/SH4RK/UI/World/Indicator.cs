@@ -24,7 +24,7 @@ public class Indicator : MonoBehaviour {
 
         var closest = _tracked
             .Where(e => e != null)
-            .OrderBy(e => Vector3.Distance(Player.instance.sharkTransform.position, e.transform.position))
+            .OrderBy(e => Vector3.Distance(_parent.position, e.transform.position))
             .FirstOrDefault();
 
         if (closest == null) {

@@ -9,7 +9,10 @@ public class FollowShot : EnemyShot {
     private Transform _target;
 
     private void Start() {
-        _target = Player.instance.sharkTransform;
+        _target = GameObject.FindGameObjectWithTag(GameTags.Player)
+            .GetComponent<Player>()
+            .Shark
+            .transform;
     }
 
     protected override Vector3 GetMoveDir() {

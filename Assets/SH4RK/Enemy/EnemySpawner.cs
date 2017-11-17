@@ -15,6 +15,7 @@ public class EnemySpawner : Spawner {
     private int _currentWave = 1;
     private Indicator _indicator;
     private bool _showIndicator;
+    private Player _player;
 
     public int currentWave { get { return _currentWave; } }
     public int remaining { get { return _waveEnemies == null ? 0 : _waveEnemies.Where(e => e != null).Count(); } }
@@ -28,6 +29,7 @@ public class EnemySpawner : Spawner {
     }
 
     private void Start() {
+        _player = GameObject.FindGameObjectWithTag(GameTags.Player).GetComponent<Player>();
         StartCoroutine(SpawnWave(_currentWave));
     }
 
@@ -49,13 +51,12 @@ public class EnemySpawner : Spawner {
                 InstantiateIndicator();
             }
         }
-
     }
 
     private void InstantiateIndicator() {
         var total = _waveEnemies.Length;
 
-        _indicator = Instantiate(indicator, Player.instance.sharkTransform).GetComponent<Indicator>();
+        _indicator = Instantiate(indicator, _player.Shark.transform).GetComponent<Indicator>();
         _indicator.FollowEnemies(_waveEnemies
             .Where(e => e != null)
             .ToArray());

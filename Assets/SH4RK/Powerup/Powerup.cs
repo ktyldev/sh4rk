@@ -16,10 +16,11 @@ public abstract class Powerup : MonoBehaviour {
 	}
     
     private void OnTriggerEnter(Collider other) {
-        if (other.GetComponent<Shark>() == null)
+        var shark = other.GetComponent<Shark>();
+        if (shark == null)
             return;
 
-        OnPickup(Player.instance.currentShark);
+        OnPickup(shark);
         Destroy(gameObject);
     }
 

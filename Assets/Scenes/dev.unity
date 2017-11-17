@@ -303,6 +303,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpawner: {fileID: 954160754}
   waveText: {fileID: 1481996200222364, guid: 855e671467071854f81c6a0783fe9db1, type: 2}
+--- !u!1 &95870047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 95870048}
+  - component: {fileID: 95870049}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &95870048
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 95870047}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 954160756}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &95870049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 95870047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2cd21fb403d5e344a633361591b506f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shark: {fileID: 1044657094749522, guid: d13fb1253d846194a88ee6f5cdeb448a, type: 2}
 --- !u!1 &166996599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,7 +1414,6 @@ GameObject:
   m_Component:
   - component: {fileID: 954160756}
   - component: {fileID: 954160759}
-  - component: {fileID: 954160755}
   - component: {fileID: 954160757}
   - component: {fileID: 954160758}
   - component: {fileID: 954160760}
@@ -1384,18 +1424,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &954160755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 954160754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2cd21fb403d5e344a633361591b506f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shark: {fileID: 1044657094749522, guid: d13fb1253d846194a88ee6f5cdeb448a, type: 2}
 --- !u!4 &954160756
 Transform:
   m_ObjectHideFlags: 0
@@ -1405,7 +1433,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 95870048}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

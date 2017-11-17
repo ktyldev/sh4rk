@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour {
 
     private Vector3 _offset;
     private float _shakeTimeLeft;
+    private Player _player;
 
     void Awake() {
         if (!PlayerPrefs.HasKey("camera_shake")) {
@@ -20,6 +21,10 @@ public class CameraController : MonoBehaviour {
         }
 
         _offset = transform.position;
+    }
+
+    void Start() {
+        _player = GameObject.FindGameObjectWithTag(GameTags.Player).GetComponent<Player>();
     }
 
     void Update() {
@@ -48,7 +53,7 @@ public class CameraController : MonoBehaviour {
 
         var elapsed = 0f;
 
-        var duration = Player.instance.currentShark.weapon.shotDelay;
+        var duration = _player.Shark.weapon.shotDelay;
 
         while (elapsed < duration) {
             elapsed += Time.deltaTime;
