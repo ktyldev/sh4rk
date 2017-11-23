@@ -3,37 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ControlModeManager : MonoBehaviour {
+public class ControlModeButton : MonoBehaviour {
 
     public Sprite console;
     public Sprite keyboard;
-
-    private const string _key = "control_mode";
+    
     private PlayerInput _input;
-
     private Image _image;
+    private Dictionary<string, Sprite> _controlModeSprites;
 
     void Awake() {
-        if (!PlayerPrefs.HasKey(_key)) {
-            PlayerPrefs.SetInt(_key, 0);
-        }
-
         _image = GetComponentInChildren<Image>();
+        _controlModeSprites = new Dictionary<string, Sprite>();
     }
 
     void Start() {
         _input = GameObject.FindGameObjectWithTag(GameTags.Input).GetComponent<PlayerInput>();
+        _controlModeSprites[GameTags.Gamepad] = console;
+        _controlModeSprites[GameTags.MouseKeyboard] = keyboard;
     }
 
     void OnGUI() {
-        if (_input.controlModeName == "Gamepad")
-            _image.sprite = console;
-        else
-            _image.sprite = keyboard;
+        var currentSprite = _controlModeSprites[_input.controlModeName];
+
+        if (_image.sprite != currentSprite) {
+            _image.sprite = currentSprite;
+        }
     }
 
     public void ToggleMode() {
-        PlayerPrefs.SetInt(_key, PlayerPrefs.GetInt(_key) == 0 ? 1 : 0);
         _input.ToggleControlMode();
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Gamepad : MonoBehaviour, IControlMode {
     public string controlMode {
-        get { return "Gamepad"; }
+        get { return GameTags.Gamepad; }
     }
 
     public bool Attack() {

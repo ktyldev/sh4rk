@@ -14,5 +14,10 @@ public class GameTags {
     public const string MusicVolume = "music_volume";
     public const string CameraShake = "camera_shake";
     public const string HighScore = "high_score";
+    public const string ControlMode = "control_mode";
 
+    // Control Modes
+    public const string Gamepad = "Gamepad";
+    public const string MouseKeyboard = "Mouse & Keyboard";
+    public const string Pause = "Pause";
 }

@@ -23,7 +23,7 @@ public class MouseKeyboard : MonoBehaviour, IControlMode {
     }
     
     public string controlMode {
-        get { return "Mouse & Keyboard"; }
+        get { return GameTags.MouseKeyboard; }
     }
 
     public bool Attack() {
