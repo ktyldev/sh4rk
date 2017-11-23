@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour, IAgentController {
 
-    public static PlayerInput instance { get; private set; }
+    // public static PlayerInput instance { get; private set; }
 
     public string controlModeName {
         get {
@@ -45,15 +45,15 @@ public class PlayerInput : MonoBehaviour, IAgentController {
     private PauseMode _pauseMode;
     private int _controlModeIndex;
 
-    void Awake() {
-        if (instance != null && instance != this) {
-            Destroy(gameObject);
-            return;
-        }
+    //void Awake() {
+    //    if (instance != null && instance != this) {
+    //        Destroy(gameObject);
+    //        return;
+    //    }
 
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
+    //    instance = this;
+    //    DontDestroyOnLoad(gameObject);
+    //}
 
     private void Start() {
         _controlModeIndex = PlayerPrefs.GetInt("control_mode");
@@ -83,12 +83,8 @@ public class PlayerInput : MonoBehaviour, IAgentController {
             GameManager.Reload();
         }
     }
-
-    public static void ToggleControlMode() {
-        instance.IterateControlMode();
-    }
-
-    protected void IterateControlMode() {
+    
+    public void ToggleControlMode() {
         var oldIindex = _controlModeIndex;
         var newIndex = oldIindex == _controlModes.Length - 1 ?
             0 :

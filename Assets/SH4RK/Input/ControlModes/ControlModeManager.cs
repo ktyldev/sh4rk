@@ -9,6 +9,7 @@ public class ControlModeManager : MonoBehaviour {
     public Sprite keyboard;
 
     private const string _key = "control_mode";
+    private PlayerInput _input;
 
     private Image _image;
 
@@ -20,8 +21,12 @@ public class ControlModeManager : MonoBehaviour {
         _image = GetComponentInChildren<Image>();
     }
 
+    void Start() {
+        _input = GameObject.FindGameObjectWithTag(GameTags.Input).GetComponent<PlayerInput>();
+    }
+
     void OnGUI() {
-        if (PlayerInput.instance.controlModeName == "Gamepad")
+        if (_input.controlModeName == "Gamepad")
             _image.sprite = console;
         else
             _image.sprite = keyboard;
@@ -29,7 +34,6 @@ public class ControlModeManager : MonoBehaviour {
 
     public void ToggleMode() {
         PlayerPrefs.SetInt(_key, PlayerPrefs.GetInt(_key) == 0 ? 1 : 0);
-
-        PlayerInput.ToggleControlMode();
+        _input.ToggleControlMode();
     }
 }

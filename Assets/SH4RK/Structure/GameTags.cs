@@ -7,6 +7,7 @@ public class GameTags {
     public const string GameController = "GameController";
     public const string Audio = "Audio";
     public const string Player = "Player";
+    public const string Input = "Input";
 
     // PlayerPrefs
     public const string SfxVolume = "fx_volume";

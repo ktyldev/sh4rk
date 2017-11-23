@@ -14,6 +14,5 @@ public class Persistence : MonoBehaviour {
 
         _instance = this;
         DontDestroyOnLoad(gameObject);
-        print("Persistence awake");
     }
 }

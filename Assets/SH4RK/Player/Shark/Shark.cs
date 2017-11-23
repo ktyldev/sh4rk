@@ -17,15 +17,20 @@ public class Shark : MonoBehaviour, IAgent {
     }
     public IAgentController controller {
         get {
-            return PlayerInput.instance;
+            return _input;
         }
     }
 
+    private PlayerInput _input;
     private WeaponMount _mount;
     private Shield _shield;
 
     void Awake() {
         _mount = GetComponentInChildren<WeaponMount>();
+    }
+
+    void Start() {
+        _input = GameObject.FindGameObjectWithTag(GameTags.Input).GetComponent<PlayerInput>();
     }
     
     public void PowerupWeapon(GameObject weapon, int shots) {
